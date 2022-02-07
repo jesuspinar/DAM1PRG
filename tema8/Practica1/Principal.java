@@ -1,15 +1,22 @@
-package com.programacionOO.tema8.practica1;
+package com.programacionOO.tema8.Practica1;
 
 public class Principal {
     public static void main(String[] args) {
         Coche cDef = new Coche();
-        Coche c1 = new Coche("Ferrary","2345KLI",Color.ROJO,true,Tipo.DEPORTIVO,Seguro.TODORIESGO);
-        System.out.println(cDef.imprimirCoche());
-        System.out.println(c1.imprimirCoche());
-        //MODIFICADO EJERCICIO
-        /*c1.setColor(Color.AMARILLO);*/
-        System.out.println(c1.imprimirCoche());
+        Coche c1 = new Coche("Ferrary","2345KLI",Color.ROJO,true,Coche.Tipo.DEPORTIVO,Seguro.TODORIESGO);
+        cDef.imprimirCoche();
+        c1.imprimirCoche();
+        //MODIFICACION
+        /*c1.setColor(Color.AMARILLO);
+        * //es correcto el metodo asegura el cambion
+        * valida la entrada de datos
+        * */
+        /*c1.color = Color.AMARILLO;
+        * //es incorrecto
+        * */
+        System.out.println(c1);//toString() lo COJE LA CLASE OBJ que esta Usando el @override de la clase Coche
     }
+
 }
 /*
 1. Crea un programa para poder representar información sobre coches.

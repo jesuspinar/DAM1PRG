@@ -48,6 +48,14 @@ public class Util {
         System.out.println(s);
         return Double.parseDouble(lector.nextLine());
     }
+    public static long askLong(String s) {
+        System.out.println(s);
+        return Long.parseLong(lector.nextLine());
+    }
+    public static float askFloat(String s) {
+        System.out.println(s);
+        return Float.parseFloat(lector.nextLine());
+    }
     
     public static int contarVocal(String s) {
         int contadorVocal = 0;
@@ -116,7 +124,7 @@ public class Util {
     public static double[] randomArrayDouble(int size, int min, int max) {
         double a[] = new double[size];
         for (int i = 0; i < a.length; i++) {
-            a[i] = Util.random(min, max);
+            a[i] = Util.randomDouble(min, max);
         }
         return a;
     }
