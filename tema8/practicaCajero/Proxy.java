@@ -15,13 +15,40 @@ public class Proxy {
         return null;
     }
 
-    public boolean validarCredenciales(String numTarjeta, String pin) {
+    public Empresa getEmpresa(String numTarjeta) {
         char codigo = numTarjeta.charAt(0);
         for(Empresa empresa: empresas) {
-            if(codigo == empresa.getCodigo()) {
-                return empresa.validarCredenciales(numTarjeta, pin);
-            }
+            if (codigo == empresa.getCodigo())
+                return empresa;
         }
+        return null;
+    }
+
+    public boolean validarCredenciales(String numTarjeta, String pin) {
+        Empresa empresa = getEmpresa(numTarjeta);
+        if(empresa != null)
+            return empresa.validarCredenciales(numTarjeta, pin);
         return false;
+    }
+
+    public boolean ingresar(String numTarjeta, double cantidad) {
+        Empresa empresa = getEmpresa(numTarjeta);
+        if(empresa != null)
+            return empresa.ingresar(numTarjeta, cantidad);
+        return false;
+    }
+
+    public double retirar(String numTarjeta, double cantidad) {
+        Empresa empresa = getEmpresa(numTarjeta);
+        if(empresa != null)
+            return empresa.retirar(numTarjeta, cantidad);
+        return -1;
+    }
+
+    public double consultarSaldo(String numTarjeta) {
+        Empresa empresa = getEmpresa(numTarjeta);
+        if(empresa != null)
+            return empresa.consultarSaldo(numTarjeta);
+        return Long.MIN_VALUE;
     }
 }

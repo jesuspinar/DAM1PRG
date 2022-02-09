@@ -1,35 +1,33 @@
 package com.programacionOO.tema8.practicaCajero;
 
 import com.programacionOO.tema8.practicaCajero.config.Config;
-
-
 import java.util.Random;
 
 public class Banco {
-    private String codigo;
-    private String nombre;
+    private final String codigo;
+    private final String nombre;
     private Cuenta[] cuentas;
 
     public Banco(String codigo, String nombre) {
+        this(codigo, nombre, null);
+    }
+
+    public Banco(String codigo, String nombre, Bombo bombo) {
         this.codigo = codigo;
         this.nombre = nombre;
-        if (Config.DEBUG) {
-            crearDatosPrueba();
+        if (Config.DEBUG && bombo != null) {
+            crearDatosPrueba(bombo);
         }
     }
-    //TODO : crear cuentas y tarjetas que no se repitan
-    private void crearDatosPrueba() {
+
+    private void crearDatosPrueba(Bombo bombo) {
         cuentas = new Cuenta[Config.CANTIDAD_CUENTAS];
         Random r = new Random();
         for(int i = 0; i < cuentas.length; i++) {
             cuentas[i] = new Cuenta(
                     String.valueOf(r.nextInt(Config.CUENTA_MAX_NUMERO - Config.CUENTA_MIN_NUMERO + 1) + Config.CUENTA_MIN_NUMERO),
                     "Propietario " + (i+1));
-            cuentas[i].crearTarjeta();
-        }
-        //TODO TESTING
-        for (int i = 0; i < cuentas.length; i++) {
-            System.out.println(cuentas[i]);
+            cuentas[i].crearTarjeta(codigo, bombo.extraerBola());
         }
     }
 
@@ -41,13 +39,41 @@ public class Banco {
         return nombre;
     }
 
-    public boolean validarCredenciales(String numTarjeta, String pin) {
+    public Cuenta getCuenta(String numTarjeta) {
         for(Cuenta cuenta: cuentas) {
-            Tarjeta tarjeta = cuenta.getTarjeta();
-            return tarjeta.getNumero().equals(numTarjeta) &&
-                    tarjeta.getPin().equals(pin);
+            if (cuenta.getTarjeta().getNumero().equals(numTarjeta))
+                return cuenta;
+        }
+        return null;
+    }
+
+    public boolean validarCredenciales(String numTarjeta, String pin) {
+        Cuenta cuenta = getCuenta(numTarjeta);
+        if(cuenta != null) {
+            return cuenta.getTarjeta().getNumero().equals(numTarjeta) &&
+                    cuenta.getTarjeta().getPin().equals(pin);
         }
         return false;
     }
 
+    public boolean ingresar(String numTarjeta, double cantidad) {
+        Cuenta cuenta = getCuenta(numTarjeta);
+        if(cuenta != null)
+            return cuenta.ingresar(cantidad);
+        return false;
+    }
+
+    public double retirar(String numTarjeta, double cantidad) {
+        Cuenta cuenta = getCuenta(numTarjeta);
+        if(cuenta != null)
+            return cuenta.retirar(cantidad);
+        return -1;
+    }
+
+    public double consultarSaldo(String numTarjeta) {
+        Cuenta cuenta = getCuenta(numTarjeta);
+        if(cuenta != null)
+            return cuenta.getSaldo();
+        return Long.MIN_VALUE;
+    }
 }
