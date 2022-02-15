@@ -19,7 +19,7 @@ public class Bombo {
 
     public int extraerBola() {
         if(validos >= 0) {
-            int indice = random.nextInt(validos - 0 + 1) + 0;
+            int indice = random.nextInt(validos + 1);
             int numero = array[indice];
             array[indice] = array[validos];
             array[validos] = numero;

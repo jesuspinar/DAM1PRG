@@ -25,7 +25,8 @@ public class Banco {
         Random r = new Random();
         for(int i = 0; i < cuentas.length; i++) {
             cuentas[i] = new Cuenta(
-                    String.valueOf(r.nextInt(Config.CUENTA_MAX_NUMERO - Config.CUENTA_MIN_NUMERO + 1) + Config.CUENTA_MIN_NUMERO),
+                    String.valueOf(r.nextInt(Config.CUENTA_MAX_NUMERO
+                            - Config.CUENTA_MIN_NUMERO + 1) + Config.CUENTA_MIN_NUMERO),
                     "Propietario " + (i+1));
             cuentas[i].crearTarjeta(codigo, bombo.extraerBola());
         }
