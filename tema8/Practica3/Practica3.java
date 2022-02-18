@@ -4,6 +4,7 @@ import com.programacionOO.libs.Util;
 import com.programacionOO.tema8.practicaCajero.Bombo;
 
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class Practica3 {
     private final Bombo nuevoNia = new Bombo(Config.CANTIDAD_ALUMNOS,Config.INDICE);
@@ -14,11 +15,11 @@ public class Practica3 {
 
     public Practica3() {
         crearDatosPrueba();
-        mostrarOpciones();
+        mostrarMenu();
         opcionesMenu();
     }
 
-    private void mostrarOpciones() {
+    private void mostrarMenu() {
         System.out.println("*********************");
         System.out.println("** GESTIÓN ALUMNOS **");
         System.out.println("*********************");
@@ -29,40 +30,149 @@ public class Practica3 {
         System.out.println("0. Salir ");
     }
 
+    private void mostrarConsultas() {
+        System.out.println("***************");
+        System.out.println("** CONSULTAS **");
+        System.out.println("***************");
+        System.out.println("1. Por grupo ...");
+        System.out.println("2. Por edad ...");
+        System.out.println("3. Por nia ...");
+        System.out.println("4. Por apellidos ...");
+        System.out.println("----------------------");
+        System.out.println("0. Volver al menú principal ");
+    }
+
     private void opcionesMenu() {
+        int opcion;
+        do {
+            do {
+                opcion = Util.askInteger("Elije una opción disponible");
+            } while (opcion < 0 || opcion > 3);
+
+            switch (opcion) {
+                case 1:
+                    alumnos = isArrayFull();//comprobacion array no lleno
+                    alumnos[contador] = nuevoAlumno(); //cambiar contador despues de pruebas
+                    break;
+                case 2:
+                    borrarAlumno(Util.askLong("Intruce el nia del alumno"));
+                    break;
+                case 3:
+                    mostrarConsultas();
+                    opcionesConsultas();
+                    break;
+                case 0:
+                    System.out.println("\nHasta pronto ...");
+                    break;
+            }
+        } while (opcion != 0);
+    }
+
+    private void opcionesConsultas(){
         int opcion;
         do {
             opcion = Util.askInteger("Elije una opción disponible");
         } while (opcion < 0 || opcion > 3);
 
         switch (opcion) {
-            case 1://TODO : Nuevo alumno
-                alumnos = arrayFull();//comprobacion array no lleno
-                alumnos[contador] = nuevoAlumno(); //cambiar contador despues de pruebas
+            case 1://TODO : busqueda por grupoo
+                buscarAlumnoPorGrupo(Util.askString("Inserte un grupo"));
                 break;
-            case 2://TODO : Borrar alumno //1-busca //2-confirma //2a-elimna //3-cancela
-                borrarAlumno(Util.askLong("Intruce el nia del alumno"));
+            case 2://TODO : busqueda por edad
+                buscarAlumnoPorEdad(Util.askInteger("Inserte la edad"));
                 break;
-            case 3://TODO : Consultas sobre alumno
+            case 3://TODO : busqueda por nia
+                System.out.println("Funcion bajo desarrollo...");
+                break;
+            case 4://TODO : busqueda por Apellidos
+                buscarAlumnoPorApellido(Util.askString("Inserte un apellido:"));
                 break;
             case 0:
-                System.out.println("\nHasta pronto ...");
                 break;
         }
     }
 
-    private Alumno[] arrayFull() {
+    /*
+     * si Alumno[] esta completo
+     * crear un nuevo Alumno[] con 2 mas de posiciones
+     * rellenar el array con posicones nuevas
+     */
+
+    public Alumno[] buscarAlumnoPorGrupo(String gurpo){
+        Alumno[] alumnosGrupo;
+        int numeroAlumnos = 0;
+        int alumnosInsertados = 0;
+        for (int i = 0; i < alumnos.length; i++) {
+            if(alumnos[i].getGrupo().equalsIgnoreCase(gurpo)){
+                numeroAlumnos++;
+            }
+        }
+        if (contador > 0) {
+            alumnosGrupo = new Alumno[contador];
+            for (int i = 0; i < numeroAlumnos; i++) {
+                if (alumnos[i].getGrupo().equalsIgnoreCase(gurpo)) {
+                    alumnosGrupo[alumnosInsertados++] = alumnos[i];
+                }
+            }
+            return alumnosGrupo;
+        }
+        return null;
+    }
+    public Alumno[] buscarAlumnoPorEdad(int edad){
+        Alumno[] alumnosEdad;
+        int numeroAlumnos = 0;
+        int alumnosInsertados = 0;
+        for (int i = 0; i < alumnos.length; i++) {
+            if(alumnos[i].getEdad() == edad){
+                numeroAlumnos++;
+            }
+        }
+        if (contador > 0) {
+            alumnosEdad = new Alumno[contador];
+            for (int i = 0; i < numeroAlumnos; i++) {
+                if (alumnos[i].getEdad() == edad) {
+                    alumnosEdad[alumnosInsertados++] = alumnos[i];
+                }
+            }
+            return alumnosEdad;
+        }
+        return null;
+    }
+
+    public Alumno[] buscarAlumnoPorApellido(String apellidos){
+        Alumno[] alumnosApellidos;
+        int numeroAlumnos = 0;
+        int alumnosInsertados = 0;
+        for (int i = 0; i < alumnos.length; i++) {
+            if(alumnos[i].getApellidos().toLowerCase().startsWith(apellidos.toLowerCase())){
+                numeroAlumnos++;
+            }
+        }
+        if (contador > 0) {
+            alumnosApellidos = new Alumno[contador];
+            for (int i = 0; i < numeroAlumnos; i++) {
+                if (alumnos[i].getApellidos().toLowerCase().startsWith(apellidos.toLowerCase())) {
+                    alumnosApellidos[alumnosInsertados++] = alumnos[i];
+                }
+            }
+            return alumnosApellidos;
+        }
+        return null;
+    }
+
+
+
+    private Alumno[] isArrayFull() {
         int ultimaPosicion = alumnos.length - 1;
         double extraPosicion = alumnos.length * 1.5;//puede fallar si el array es demasiado grande
-        // si Alumno[] esta completo
-        // crear un nuevo Alumno[] con 2 mas de posiciones
-        // rellenar el array con posicones nuevas
+
         if(alumnos[ultimaPosicion].getNia() != 0){
             Alumno[] alumnosExtra = new Alumno[(int)extraPosicion];
-            for (int i = 0; i < alumnosExtra.length; i++) {
+            for (int i = 0; i < alumnos.length; i++) {
                 alumnosExtra[i] = alumnos[i];
             }
-            return alumnosExtra;
+            alumnos = alumnosExtra; //se le pasa el puntero en memoria con las posiciones nuevas
+            return alumnos;
         }
         return alumnos;
     }
@@ -107,16 +217,13 @@ public class Practica3 {
 
     }
 
-    private void opcionesConsultas(){
-
-    }
 
 
+    //todo: metodo buscar en array
     private void crearDatosPrueba() {
 
         alumnos = new Alumno[Config.CANTIDAD_ALUMNOS];
 
-        //todo : alumnos mayores de x edad
         for(int i = 0; i < alumnos.length; i++) {
             GregorianCalendar fechaNacimiento = new GregorianCalendar(
                     Util.random(2000,2022),//año

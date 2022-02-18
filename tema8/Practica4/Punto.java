@@ -1,7 +1,6 @@
 package com.programacionOO.tema8.Practica4;
 
-public class Practica4 {
-    public class Punto{
+public class Punto {
         private double x;
         private double y;
 
@@ -33,5 +32,5 @@ public class Practica4 {
         public String visualizarPunto() {
             return "Punto{" + "x=" + x + ", y=" + y + '}';
         }
-    }
+
 }
