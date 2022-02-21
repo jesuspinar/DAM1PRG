@@ -1,4 +1,4 @@
-package com.programacionOO.tema8.Practica2;
+package com.programacionOO.tema8.Practica02;
 
 public class Asignatura {
     private String nombre;

@@ -1,4 +1,4 @@
-package com.programacionOO.tema8.Practica4;
+package com.programacionOO.tema8.Practica04;
 
 public class Circulo {
     private Punto centro;

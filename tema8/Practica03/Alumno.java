@@ -1,4 +1,4 @@
-package com.programacionOO.tema8.Practica3;
+package com.programacionOO.tema8.Practica03;
 
 import java.time.LocalDate;
 import java.time.Period;

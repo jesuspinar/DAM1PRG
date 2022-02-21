@@ -1,19 +1,18 @@
-package com.programacionOO.tema8.Practica3;
+package com.programacionOO.tema8.Practica03;
 
 import com.programacionOO.libs.Util;
 import com.programacionOO.tema8.practicaCajero.Bombo;
 
 import java.util.GregorianCalendar;
-import java.util.Locale;
 
-public class Practica3 {
+public class Practica03 {
     private final Bombo nuevoNia = new Bombo(Config.CANTIDAD_ALUMNOS,Config.INDICE);
     private final Bombo nuevoTel = new Bombo(Config.CANTIDAD_ALUMNOS,Config.INDICE_TEL);
 
     private int contador = 0;
     private Alumno[] alumnos;
 
-    public Practica3() {
+    public Practica03() {
         crearDatosPrueba();
         mostrarMenu();
         opcionesMenu();

@@ -1,6 +1,4 @@
-package com.programacionOO.tema8.Practica3;
-
-import static java.lang.Integer.MAX_VALUE;
+package com.programacionOO.tema8.Practica03;
 
 public class Config {
     public static final boolean DEBUG = true;

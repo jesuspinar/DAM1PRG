@@ -1,15 +1,14 @@
 package com.programacionOO.tema8;
 
-import com.programacionOO.tema8.Practica2.Practica2;
-import com.programacionOO.tema8.Practica3.Practica3;
-import com.programacionOO.tema8.practicaCajero.App;
+import com.programacionOO.tema8.Practica06.TiendaBicis;
 
 public class Main {
     public static void main(String[] args){
         //App app = new App();
 //        Practica2 practica2 = new Practica2();
         System.out.println("helloworld");
-        Practica3 practica3 = new Practica3();
+//        Practica3 practica3 = new Practica3();
+        TiendaBicis tienda = new TiendaBicis();
     }
 }
 

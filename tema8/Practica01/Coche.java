@@ -1,4 +1,4 @@
-package com.programacionOO.tema8.Practica1;
+package com.programacionOO.tema8.Practica01;
 
 public class Coche {
 

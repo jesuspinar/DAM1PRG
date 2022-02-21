@@ -1,7 +1,7 @@
-package com.programacionOO.tema8.Practica4;
+package com.programacionOO.tema8.Practica04;
 
-public class Practica5 {
-    public Practica5(){
+public class Practica05 {
+    public Practica05(){
         Punto p1 = new Punto(4,5);
         Punto p2 = new Punto(3,7);
         Circulo c1 = new Circulo(p1,10.9);
