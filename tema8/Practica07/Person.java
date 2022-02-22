@@ -1,6 +1,7 @@
 package com.programacionOO.tema8.Practica07;
 
 
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 public class Person {
@@ -31,8 +32,12 @@ public class Person {
 
     @Override
     public String toString() {
+        SimpleDateFormat showTime = new SimpleDateFormat("hh:mm:ss");
+        SimpleDateFormat showDate = new SimpleDateFormat("dd/MM/yyyy");
+
         return  "\n" + sip + "\t" + name  + "\t" + sex + "\t" + age + "\t" +
-                adminsionDate + "\t " + sintoms + "\t" + prerev ;
+                showDate.format(adminsionDate.getTime()) + "\t " + sintoms + "\t" + prerev +
+                showTime.format(adminsionDate.getTime());
     }
 
 }

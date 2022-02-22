@@ -10,7 +10,7 @@ public class Main {
         System.out.println("helloworld");
 //        Practica3 practica3 = new Practica3();
 //        TiendaBicis tienda = new TiendaBicis();
-//        App p = new App();
+        App p = new App();
     }
 }
 

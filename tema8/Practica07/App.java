@@ -8,7 +8,7 @@ public class App {
 //    private Person newAdmision = new Person();
 
     public App(){
-
+        printUsersData();
     }
 
     private boolean isSipRegistered(){
@@ -22,7 +22,22 @@ public class App {
         }
     }
 
-    //todo : regist or add new person entries to data admisions
     //todo : print history table
+    //todo : print user
 
+    private void printUsersData(){
+
+        System.out.printf("Sip\t" + "Nombre\t" + "Sexo\t" + "Fecha de entrada\t" +
+                "Hora de entrada\t" + "Edad\t" + "Sintomatologia\t" + "Temp\t" +
+                "ppm\t" + "Ten Sis\t" + "Ten Dias\t" + "Fecha de alta\t" +
+                "Hora de alta\t" + "Motivo del alta");
+        Person[] persons = admisions.getAdmisions();
+        for (Person person: persons) {
+            System.out.println(person.toString());
+        }
+
+//        for (int i = 0; i < persons.length; i++) {
+//             System.out.println(person.toString());
+//        }
+    }
 }

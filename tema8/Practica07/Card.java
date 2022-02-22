@@ -10,4 +10,9 @@ public class Card {
     public int getCardNum() {
         return cardNum;
     }
+
+    @Override
+    public String toString() {
+        return cardNum + " ";
+    }
 }

@@ -3,6 +3,7 @@ package com.programacionOO.tema8.Practica07;
 import com.github.javafaker.Faker;
 import com.programacionOO.libs.Util;
 
+import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
@@ -73,6 +74,26 @@ public class Data {
         return false;
     }
 
+    public boolean insertPerson(Person nP){
+        if (findBySip(nP.getSip().getCardNum()) == false &&
+            countAdmisions < admisions.length){
+            admisions[++countAdmisions] = nP;
+            return true;
+        }else if(findBySip(nP.getSip().getCardNum()) == true ||
+                countAdmisions > admisions.length){
+            return false;
+        }
+        return false;
+    }
+
+    public Person[] getAdmisions() {
+        return admisions;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(admisions);
+    }
 }
 
 
