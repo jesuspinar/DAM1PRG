@@ -17,6 +17,10 @@ public class Util {
         Random r = new Random();
         return r.nextDouble()*(max-min)+min;
     }
+    public static float randomFloat(int min, int max){
+        Random r = new Random();
+        return r.nextFloat()*(max-min)+min;
+    }
     public static int factorial(int n) {
         int result = 1;
         if(n >= 0){

@@ -20,6 +20,9 @@ public class Stock {
         bicis = new Bici[nbicis];
         GregorianCalendar calendar;
         int day = 0, month = 0, year = 0;
+
+        //todo : variables temporales para cada elemento
+        //
         for (int i = 0; i < nbicis; i++) {
             day = Util.random(1,30);
             month = Util.random(1,12);
@@ -52,8 +55,6 @@ public class Stock {
         }
     }
 
-
-
     public boolean isArrayBicisFull() {
         int ultimaPosicion = bicis.length - 1;
 
@@ -79,13 +80,18 @@ public class Stock {
     /*Si array bici[] en la utima posicion == null
      * añadir + posiciones
      */
+    //todo : cambiar el nombre comprarBici
     public void setBici(Bici bici) {
+        //todo : cambiar ultima posicion a global para reutirzar
         int ultimaPosicion = bicis.length - 1;
 
         if(isArrayBicisFull() == false){
             bicis[ultimaPosicion] = bici;
         }
+        //todo :  else y automatizar la bici
     }
+
+    //todo:  evitar que haya entrada y salida y hacer lo boolean
     public void removeBici(){
         int i = buscarBici(Util.askLong("Indica la referencia del modelo que quieres comprar :"));
         int existencia = bicis[i].getExistencias();
@@ -107,6 +113,7 @@ public class Stock {
     }
 
     //Metodos para buscar mostrando resultados
+
     public int buscarBici(long ref){
         for (int i = 0; i < bicis.length; i++) {
             if (ref == bicis[i].getReferencia()){
@@ -116,7 +123,7 @@ public class Stock {
         }
         return -1;
     }
-
+    //todo : devolver un array bicis con las bicis que tiene la marca ..
     public void buscarMarcaBici(String marca){
         for (int i = 0; i < bicis.length; i++) {
             if (marca.equalsIgnoreCase(bicis[i].getMarca())){

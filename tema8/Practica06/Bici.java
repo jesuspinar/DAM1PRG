@@ -63,6 +63,7 @@ public class Bici {
         return existencias;
     }
 
+    //todo : cambiar setExistencias por venderExitecias
     public void setExistencias(int existencias) {
         this.existencias = existencias;
     }
