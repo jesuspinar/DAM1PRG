@@ -4,7 +4,7 @@ public class Config {
     public static final boolean DEBUG = true;
     public static final int ENTRIES_TEST = 5;
     public static final int NUM_CARDS = ENTRIES_TEST;
-    public static final int INDX_CARDS = 4000;
+    public static final int INDX_CARDS = 8000;
     public static final int MIN_AGE = 14;
     public static final int MAX_AGE = 99;
     public static final int MIN_YEAR = 2019;

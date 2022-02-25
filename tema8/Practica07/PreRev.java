@@ -10,6 +10,8 @@ public class PreRev {
     private int tensionDi;
     //todo : date of atended random?
     //private GregorianCalendar dateOfAttend;
+    //todo : extra data
+    //Motivo alta
 
     public PreRev(float temperatura, int ppm, int tensionSis, int tensionDi) {
         this.temperatura = temperatura;
@@ -20,6 +22,7 @@ public class PreRev {
 
     @Override
     public String toString() {
-        return "\t" + temperatura + "\t" + ppm + "\t" + tensionSis + "\t" + tensionDi + "\t";
+        String result = String.format("%12.2f%10d%10d%11d",temperatura, ppm,tensionSis,tensionDi);
+        return result;
     }
 }

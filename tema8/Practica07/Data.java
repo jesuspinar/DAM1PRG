@@ -10,6 +10,9 @@ import java.util.Locale;
 public class Data {
     private Person[] admisions;
     private int countAdmisions;
+    //private AmisionEntry[] newAdmision
+    //todo guardar las consultas en otro
+    //todo usar countAdmision para agilizar la busqueda del array
 
     public Data(int entries,CardDrum drum) {
         admisions = new Person[entries];
@@ -61,7 +64,7 @@ public class Data {
             Person nP = new Person(sip,name,sex,age, admisionDate,sintoms,prerev);
             admisions[i] = nP;
             countAdmisions++;
-            System.out.println(nP.toString());
+            //System.out.println(nP.toString());
         }
     }
 
@@ -73,9 +76,18 @@ public class Data {
         }
         return false;
     }
-
+    public boolean findByAdminsionDate(GregorianCalendar date){
+        for (int i = 0; i < admisions.length; i++) {
+            if (admisions[i].getAdminsionDate() == date){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public boolean insertPerson(Person nP){
         if (findBySip(nP.getSip().getCardNum()) == false &&
+            findByAdminsionDate(nP.getAdminsionDate()) == false &&
             countAdmisions < admisions.length){
             admisions[++countAdmisions] = nP;
             return true;
