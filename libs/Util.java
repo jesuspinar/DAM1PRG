@@ -1,11 +1,12 @@
 package com.programacionOO.libs;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Util {
+public class Util{
     final static String ESC = "\u001b[";
     final static String ESCFINAL = "\u001B[0m";
-    public static Scanner lector = new Scanner(System.in);
+    public static final Scanner lector = new Scanner(System.in);
 
 
     /****** CON return ******/
@@ -39,18 +40,50 @@ public class Util {
         assert num1 >= 0;
         return num1;
     }
-
     public static String askString(String s) {
-        System.out.println(s); 
+        System.out.println(s);
         return lector.nextLine();
     }
+
+    public static String askStringRestricted(String s, int minLength,int maxLength) {
+        boolean isValid = false;
+        String data;
+        do {
+
+            System.out.println(s);
+            data = lector.nextLine();
+            isValid = (data.length() >= minLength && data.length() <= maxLength);
+            if (!isValid) {
+                System.out.printf("Min string length = %s \nMax length = %s ",minLength, maxLength);
+            }
+
+        }while (!isValid);
+        return data;
+    }
     public static int askInteger(String s) {
-        System.out.println(s);
-        return Integer.parseInt(lector.nextLine());
+        boolean isValid = false;
+        int data = 0;
+        do {
+            try {
+                System.out.println(s);
+                data = Integer.parseInt(lector.nextLine());
+                isValid = true;
+            } catch (NumberFormatException nfe) {
+                System.out.println("Enter numbers only");
+            } //todo : enviar excepcion al metodo superior
+        }while (!isValid);
+        return data;
     }
     public static double askDouble(String s) {
-        System.out.println(s);
-        return Double.parseDouble(lector.nextLine());
+        boolean isValid = false;
+        double data = 0;
+        do {
+            System.out.println(s);
+            data = Double.parseDouble(lector.nextLine());
+            isValid = true;
+
+        }while (!isValid);
+        return data;
     }
     public static long askLong(String s) {
         System.out.println(s);
