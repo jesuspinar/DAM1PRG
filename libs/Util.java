@@ -78,10 +78,13 @@ public class Util{
         boolean isValid = false;
         double data = 0;
         do {
-            System.out.println(s);
-            data = Double.parseDouble(lector.nextLine());
-            isValid = true;
-
+            try {
+                System.out.println(s);
+                data = Double.parseDouble(lector.nextLine());
+                isValid = true;
+            } catch (NumberFormatException nfe) {
+                System.out.println("Enter numbers only");
+            } //todo : enviar excepcion al metodo superior
         }while (!isValid);
         return data;
     }
@@ -195,9 +198,7 @@ public class Util{
     public static void wait(int milisegundos){
         try {
             Thread.sleep(milisegundos);
-        } catch (InterruptedException ie) {
-            //
-        }
+        } catch (InterruptedException ie) {}
     }
     public static void clearScreen(){
         System.out.println("Pulsa INTRO para continuar");

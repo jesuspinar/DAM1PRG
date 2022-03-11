@@ -14,22 +14,23 @@ public class Practica03 {
 
     public void askDouble() {
         String letras="";
-        boolean hasLetter = false;
+        boolean isLetter = false;
         int exception = 0;
         int num = 0;
-        int mayor = 0;
+        int mayor = Integer.MIN_VALUE;
         do {
             num = Util.askInteger("Intruduce un decimal positivo para continuar, negativo para fin");
 
-            hasLetter = contieneLetras(num);
+            isLetter = contieneLetras(num);
 
-            if (!hasLetter && data.length > cont){
+            if (!isLetter && data.length > cont){
                 if(num > mayor) mayor = num;
                 data[cont++] = num;
             }
 
 
-        }while (!hasLetter && data.length > cont);
+
+        }while (!isLetter && data.length > cont);
         Util.showArray(data);
         System.out.println("El numero mayor es "+mayor);
 

@@ -27,6 +27,7 @@ public class Alumno {
     }
 
 
+
     public long getNia() {
         return nia;
     }
