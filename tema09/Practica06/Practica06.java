@@ -4,20 +4,22 @@ import java.util.Arrays;
 
 public class Practica06 {
     private int entero ;
-    private double[] enteros ;
+    private int[] enteros ;
 
-    public Practica06(int entero, double[] enteros) {
+    public Practica06(int entero, int[] enteros) {
         dividirEntreArray(entero,enteros);
     }
 
-    public static void dividirEntreArray(int num , double[] array){
-        double[] divididos = new double[array.length];
-
+    /**
+     * Prints arrays division
+     * @param num
+     * @param array
+     */
+    public static void dividirEntreArray(int num , int[] array){
         for (int i = 0; i < array.length; i++) {
             if (array[i] != 0 )
-            divididos[i] =  num / array[i];
+                System.out.println((float)num / array[i]);
             else System.out.println("No se puede dividir en la posicion " + i);
         }
-        System.out.println(Arrays.toString(divididos));
     }
 }

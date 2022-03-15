@@ -5,6 +5,8 @@ import java.util.Arrays;
 public class Practica07 {
     public static void mostrarCadenesArray(String[] cadena){
         System.out.println(Arrays.toString(cadena));
+        if (cadena == null)
+            System.out.println("Array no inicializado...");;
         for (int i = 0; i < cadena.length; i++) {
 //            if (cadena[i] != null)
             try {

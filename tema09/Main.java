@@ -7,6 +7,7 @@ import com.programacionOO.tema09.Practica03.Practica03;
 import com.programacionOO.tema09.Practica05.Practica05;
 import com.programacionOO.tema09.Practica06.Practica06;
 import com.programacionOO.tema09.Practica07.Practica07;
+import com.programacionOO.tema09.Practica08.Practica08;
 
 import java.io.IOException;
 
@@ -17,8 +18,8 @@ public class Main {
 //        Practica03 a = new Practica03(5);
 //        practica05();
 //        practica06();
-        practica07();
-
+//        practica07();
+//        Practica08 s = new Practica08();
     }
 
     private static void practica05(){
@@ -44,7 +45,7 @@ public class Main {
     }
 
     private static void practica06(){
-        double[] array = {-2,-1,0,1,2};
+        int[] array = {-2,-1,0,1,2};
         int num = 2;
         Practica06 p06 = new Practica06(num,array);
     }

@@ -15,7 +15,7 @@ public class Practica05 {
     public int getEdad() {
         return edad;
     }
-
+    //si no esturbiera el toString se mosotraria la direccion de memoria
     @Override
     public String toString() {
         return "nombre = " + nombre +

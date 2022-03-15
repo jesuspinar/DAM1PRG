@@ -49,7 +49,6 @@ public class Util{
         boolean isValid = false;
         String data;
         do {
-
             System.out.println(s);
             data = lector.nextLine();
             isValid = (data.length() >= minLength && data.length() <= maxLength);
@@ -74,6 +73,18 @@ public class Util{
         }while (!isValid);
         return data;
     }
+    public static int askInteger2(String s,int min, int max) {
+        boolean isValid = false;
+        int data;
+        do {
+            data = askInteger(s);
+            isValid = data >= min && data <= max;
+            if (!isValid)
+                System.out.printf("el numebroo tiene qu estar entre %d , %d", min,max);
+        }while (!isValid);
+        return data;
+    }
+
     public static double askDouble(String s) {
         boolean isValid = false;
         double data = 0;
