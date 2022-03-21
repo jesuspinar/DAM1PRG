@@ -8,6 +8,7 @@ import com.programacionOO.tema09.Practica05.Practica05;
 import com.programacionOO.tema09.Practica06.Practica06;
 import com.programacionOO.tema09.Practica07.Practica07;
 import com.programacionOO.tema09.Practica08.Practica08;
+import com.programacionOO.tema09.Practica10.Practica10;
 
 import java.io.IOException;
 
@@ -20,6 +21,7 @@ public class Main {
 //        practica06();
 //        practica07();
 //        Practica08 s = new Practica08();
+        Practica10 s = new Practica10();
     }
 
     private static void practica05(){

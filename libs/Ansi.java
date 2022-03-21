@@ -1,5 +1,7 @@
 package com.programacionOO.libs;
 
+import java.util.IllegalFormatException;
+
 public class Ansi {
     public enum Color {
         BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE, NONE
@@ -50,6 +52,24 @@ public class Ansi {
         if(!color.isEmpty())
             System.out.print(RESET);
         System.out.flush();//aseguar el consumo de salto de linea
+    }
+    private static String getColorStr(boolean bold, Color fg, Color bg) {
+        String fgColor = getColor(fg, ColorType.FOREGROUND);
+        String bgColor = getColor(bg, ColorType.BACKGROUND);
+        String negrita = (bold ? "1" : "0");
+        String color = "";
+        if(!fgColor.isEmpty() || !bgColor.isEmpty()) {
+            color = ESC + negrita;
+            color += (!fgColor.isEmpty() ? ";" + fgColor : "");
+            color += (!bgColor.isEmpty() ? ";" + bgColor : "");
+            color += "m";
+        }
+        return color;
+    }
+
+    public static String format(String s, boolean bold, Color fg, Color bg, Object...args) throws IllegalFormatException {
+        String color = getColorStr(bold, fg, bg);
+        return color + String.format(s, args) + RESET;
     }
 
     public static String getColor(Color c, ColorType ct) {

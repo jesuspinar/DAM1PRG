@@ -1,5 +1,6 @@
 package com.programacionOO.libs;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,6 +20,10 @@ public class Util{
         return r.nextDouble()*(max-min)+min;
     }
     public static float randomFloat(int min, int max){
+        Random r = new Random();
+        return r.nextFloat()*(max-min)+min;
+    }
+    public static float randomFloat(float min, float max){
         Random r = new Random();
         return r.nextFloat()*(max-min)+min;
     }
@@ -203,7 +208,6 @@ public class Util{
         }
         return newArray;
     }
-
 
     /****** SIN return ******/
     public static void wait(int milisegundos){
