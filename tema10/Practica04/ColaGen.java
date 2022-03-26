@@ -3,6 +3,8 @@ package com.programacionOO.tema10.Practica04;
 import com.programacionOO.libs.Util;
 
 import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
 
 public class ColaGen<T>{
     private final int GROW_FACTOR = 2;
@@ -15,7 +17,6 @@ public class ColaGen<T>{
         this.data = (T[]) new Object[initialSize];
         this.last = this.first = -1;
     }
-
     //  añade un elemento al final de la cola.
     public boolean add(T element){
         if(data.length == REORDER_FACTOR){
