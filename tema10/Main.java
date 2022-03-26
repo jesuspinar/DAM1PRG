@@ -7,6 +7,7 @@ import com.programacionOO.tema10.Practica01.Practica01;
 import com.programacionOO.tema10.Practica03.Practica03;
 import com.programacionOO.tema10.Practica04.Practica04;
 import com.programacionOO.tema10.Practica05.Practica05;
+import com.programacionOO.tema10.Practica06.Practica06;
 
 
 public class Main{
@@ -14,7 +15,9 @@ public class Main{
 //        Practica02 practica02 = new Practica02();
 //        Practica03 practica03 = new Practica03(15);
 //        Practica04 practica04 = new Practica04(5);
-        Practica05 practica05 = new Practica05(5);
+//        Practica05 practica05 = new Practica05(5);
+        Practica06 practica06 = new Practica06();
+
     }
 }
 
