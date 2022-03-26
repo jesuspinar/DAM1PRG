@@ -53,7 +53,7 @@ public class Estadisticas {
     int[] majorMenor(ArrayList<Paciente> imputData){
         //todo : [0] el paciente de menor edad ,[1] el paciente de mayor edad
         int[] data = new int[2];
-        int edadMajor = 0, edadMenor = 0;
+        int edadMajor = Integer.MIN_VALUE, edadMenor = Integer.MAX_VALUE;
 
         for (Paciente paciente: imputData) {
             if (paciente.getEdad() > edadMajor){
