@@ -9,16 +9,20 @@ import com.programacionOO.tema10.Practica04.Practica04;
 import com.programacionOO.tema10.Practica05.Practica05;
 import com.programacionOO.tema10.Practica06.Practica06;
 import com.programacionOO.tema10.Practica07.Practica07;
+import com.programacionOO.tema10.Practica08.Practica08;
+
+import java.io.IOException;
 
 
 public class Main{
-    public static void main(String[]args){
+    public static void main(String[]args) throws IOException {
 //        Practica02 practica02 = new Practica02();
 //        Practica03 practica03 = new Practica03(15);
 //        Practica04 practica04 = new Practica04(5);
 //        Practica05 practica05 = new Practica05(5);
 //        Practica06 practica06 = new Practica06();
-        Practica07 practica07 = new Practica07();
+//        Practica07 practica07 = new Practica07();
+        Practica08 practica08 = new Practica08();
 
     }
 }
