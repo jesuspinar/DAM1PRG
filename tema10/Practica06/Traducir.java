@@ -21,5 +21,6 @@ public class Traducir {
             return true;
         }
         return false;
+        //throw new exception , add thows declaration in method declaration
     }
 }
