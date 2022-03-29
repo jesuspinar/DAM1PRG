@@ -33,11 +33,11 @@ public class Practica09 {
                 case 4: extra.showWordDefition();break;
                 case 5: System.out.println(extra.toString());break;
                 case 6: playerPoints = play();
-                    if (playerPoints ) {
-
-                    }
+                    updatePodium(playerPoints);
                     ;break;
-                case 7: ;break;
+                case 7:
+                    printPodium();
+                    ;break;
             }
         }while (opcion != 0);
         System.out.println("Hasta pronto !!");
@@ -60,10 +60,30 @@ public class Practica09 {
         return point;
     }
     //todo : implement positions
-    private int podium(int playerScore){
-        for (int i = 0; i < scores.size(); i++) {
-            if ()
+    private boolean updatePodium(int playerScore){
+        Object[] score = scores.keySet().toArray();
+
+        if (score.length > 0){
+            for (int i = 0; i < score.length; i++) {//order > . <
+                if(playerScore > (int)score[i] && scores.get(playerScore) == null){
+                    String playerName = Util.askStringRestricted("Enter your name",3,15);
+                    scores.replace((int)score[i], playerName);
+                }
+            }
+            return true;
+        }else{
+            createPodium();
+            return updatePodium(playerScore);
         }
+    }
+    private void printPodium(){
+        System.out.println(scores.toString());
+    }
+    private void createPodium(){
+        scores.put(1,"Juan");
+        scores.put(3, "Sergio");
+        scores.put(5, "Marco");
+
     }
 
 

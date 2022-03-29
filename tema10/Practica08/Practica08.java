@@ -75,7 +75,7 @@ public class Practica08 {//controler, view
      * @return
      */
     public String showRandomWordDefition() {
-        int index = Util.random(0,diccionario.getSize());
+        int index = Util.random(0,diccionario.getSize()-1);
         String randomWord = diccionario.getWord(index);
         String definition = diccionario.getWord(randomWord);
         System.out.printf("Definicion : %s\n",definition);
