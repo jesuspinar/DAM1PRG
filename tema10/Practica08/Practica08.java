@@ -12,7 +12,13 @@ public class Practica08 {//controler, view
                                         "Eliminar palabra",
                                         "Consultar palabra",
                                         "Mostra diccionario"};
-    Diccionario diccionario;
+    private Diccionario diccionario;
+
+    public Practica08(int init) {//constructor for Practica09
+        diccionario = new Diccionario(init);
+        genTestWords();
+    }
+
     public Practica08() throws IOException {
         int opcion = 0;
         diccionario = new Diccionario();
@@ -27,10 +33,8 @@ public class Practica08 {//controler, view
             }
         }while (opcion != 0);
         System.out.println("Hasta pronto !!");
-
-
     }
-    private boolean addWord() throws IOException {
+    public boolean addWord() throws IOException {
         String word = Util.askStringRestricted("Añade una palabra", 3,15).toLowerCase();
         String description = Util.askStringRestricted("Añade una descripcion", 5,30).toLowerCase();
         if (diccionario.addWord(word,description)){
@@ -41,7 +45,7 @@ public class Practica08 {//controler, view
         }
     }
 
-    private boolean modifyWord() throws IOException {
+    public boolean modifyWord() throws IOException {
         String word = Util.askStringRestricted("Añade una palabra que cambiar", 3,15).toLowerCase();
         String description = Util.askStringRestricted("Añade una nueva descripcion", 5,30).toLowerCase();
         if (diccionario.modifyWord(word,description)){
@@ -51,7 +55,7 @@ public class Practica08 {//controler, view
             throw new IOException("La palabra no existe intentalo de nuevo");
         }
     }
-    private boolean deleteWord() throws IOException {
+    public boolean deleteWord() throws IOException {
         String word = Util.askStringRestricted("Añade una palabra que eliminar", 3,15).toLowerCase();
         if (diccionario.deleteWord(word)){
             System.out.println("Palabra eliminada correctamente");
@@ -61,10 +65,35 @@ public class Practica08 {//controler, view
         }
     }
 
-    private void showWordDefition() {
+    public void showWordDefition() {
         String word = Util.askStringRestricted("Añade una palabra que buscar", 3,15).toLowerCase();
-        System.out.printf("Definicion : %s\n",diccionario.showWord(word));
+        System.out.printf("Definicion : %s\n",diccionario.getWord(word));
     }
 
+    /**
+     * Prints the definition and returns the key value
+     * @return
+     */
+    public String showRandomWordDefition() {
+        int index = Util.random(0,diccionario.getSize());
+        String randomWord = diccionario.getWord(index);
+        String definition = diccionario.getWord(randomWord);
+        System.out.printf("Definicion : %s\n",definition);
+        return randomWord;
+    }
 
+    private void genTestWords(){
+        diccionario.addWord("presidente","Persona que preside un Gobierno, consejo, tribunal, junta, sociedad, acto...");
+        diccionario.addWord("grupo","Pluralidad de seres o cosas que forman un conjunto, material o mentalmente considerado.");
+        diccionario.addWord("madre","Mujer que ha concebido o ha parido uno o más hijos.");
+        diccionario.addWord("salud","Conjunto de las condiciones físicas en que se encuentra un organismo en un momento determinado.");
+        diccionario.addWord("información","Acción y efecto de informar.");
+        diccionario.addWord("perro","Mamífero doméstico de la familia de los cánidos, de tamaño, forma y pelaje muy diversos, según las razas, que tiene olfato muy fino y es inteligente y muy leal a su dueño.");
+        diccionario.addWord("aguacate","Esmeralda de forma de perilla.");
+    }
+
+    @Override
+    public String toString() {
+        return diccionario.toString();
+    }
 }

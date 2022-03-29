@@ -1,6 +1,5 @@
 package com.programacionOO.tema10.Practica08;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 public class Diccionario {//Modelo
@@ -33,17 +32,34 @@ public class Diccionario {//Modelo
         }
         return false;
     }
-    public String showWord(String word) {
+
+    /**
+     * Returns the key
+     * @param word
+     * @return
+     */
+    public String getWord(String word) {
         if(findWord(word)) {
             return palabras.get(word);
         }
         return null;
+    }
+    /**
+     * Returns the entry
+     * @param i
+     * @return
+     */
+    public String getWord(int i) {
+        return (String) palabras.keySet().toArray()[i];
     }
     public boolean findWord(String word){
         if(word != null && palabras.get(word) != null) {
             return true;
         }
         return false;
+    }
+    public int getSize(){
+        return palabras.size();
     }
 
     @Override
