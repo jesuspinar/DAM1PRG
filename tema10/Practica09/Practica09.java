@@ -22,7 +22,8 @@ public class Practica09 {
 
     public Practica09() throws IOException {
         extra = new Practica08(10);
-        scores = new TreeMap<>();
+        scores = new TreeMap<>();// todo : = new TreeMa<int, Jugador> de forma que el int actua como id del jugador(o indice)
+        // y jugador mantiene los atributos (nombre y puntacion o vida...)
         int opcion = 0;
         do {
             opcion = MenuBuilder.printMenu(menuOptions,menuMain);

@@ -1,5 +1,6 @@
 package com.programacionOO.tema09.Practica10;
 
+import com.programacionOO.libs.Ansi;
 import com.programacionOO.libs.Util;
 
 public class Practica10 {
@@ -22,7 +23,7 @@ public class Practica10 {
                 Calculadora.porcentaje(operadorX), Calculadora.porcentaje(operadorY),
                 Calculadora.raiz(operadorX),Calculadora.raiz(operadorY)
             );
-            Util.wait(8000);
+            Ansi.wait(8000);
         }while (true);
     }
 }

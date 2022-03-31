@@ -1,6 +1,7 @@
 package com.programacionOO.tema08.Practica06german;
 
 import com.programacionOO.libs.Util;
+import com.programacionOO.libs.Ansi;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -44,7 +45,7 @@ public class Ejercicio06 {
         String referencia;
         int cantidad;
         Bicicleta bicicleta;
-        Util.clearScreen();
+        Ansi.clearScreen();
         System.out.println("**************************");
         System.out.println("*** VENTA DE BICICLETA ***" );
         System.out.println("**************************");
@@ -64,22 +65,22 @@ public class Ejercicio06 {
         } else {
             System.out.println("No se ha encontrado la referencia " + referencia);
         }
-        Util.wait(milisec);
+        Ansi.wait(milisec);
     }
 
     private void mostrarStock() {
         int i = 0;
         boolean fin = false;
-        Util.clearScreen();
+        Ansi.clearScreen();
         System.out.println(tienda.stockToString());
-        Util.wait(milisec);
+        Ansi.wait(milisec);
     }
 
 
     private int menuPrincipal() {
         int opcion = -1;
         do {
-            Util.clearScreen();
+            Ansi.clearScreen();
             System.out.println("***************************");
             System.out.println("** GESTIÓN DE BICICLETAS **");
             System.out.println("***************************");
@@ -93,7 +94,7 @@ public class Ejercicio06 {
             opcion = Integer.parseInt(lector.nextLine());
             if(opcion < 0 || opcion > 4) {
                 System.out.println("Elija una opción del menú [0-4]");
-                Util.wait(milisec);
+                Ansi.wait(milisec);
             }
         } while (opcion < 0 || opcion > 4);
         return opcion;
@@ -102,7 +103,7 @@ public class Ejercicio06 {
     private int menuConsultas() {
         int opcion = -1;
         do {
-            Util.clearScreen();
+            Ansi.clearScreen();
             System.out.println("************************");
             System.out.println("** CONSULTA BICICLETA **");
             System.out.println("************************");
@@ -115,7 +116,7 @@ public class Ejercicio06 {
             opcion = Integer.parseInt(lector.nextLine());
             if(opcion < 0 || opcion > 3) {
                 System.out.println("Elija una opción del menú [0-3]");
-                Util.wait(milisec);
+                Ansi.wait(milisec);
             }
         } while (opcion < 0 || opcion > 3);
         return opcion;
@@ -138,7 +139,7 @@ public class Ejercicio06 {
                     } else {
                         System.out.println("No se ha encontrada ninguna bicicleta con la referencia " + referencia);
                     }
-                    Util.wait(milisec);
+                    Ansi.wait(milisec);
                     break;
                 case 2:
                     //Por marca
@@ -154,7 +155,7 @@ public class Ejercicio06 {
                     } else {
                         System.out.println("No se han encontrado bicicletas de la marca " + marca);
                     }
-                    Util.wait(milisec);
+                    Ansi.wait(milisec);
                     break;
                 case 3:
                     //Por modelo
@@ -170,7 +171,7 @@ public class Ejercicio06 {
                     } else {
                         System.out.println("No se han encontrado bicicletas del modelo " + modelo);
                     }
-                    Util.wait(milisec);
+                    Ansi.wait(milisec);
                     break;
             }
         } while (opcion != 0);
@@ -189,7 +190,7 @@ public class Ejercicio06 {
         int stock;
         boolean validado;
 
-        Util.clearScreen();
+        Ansi.clearScreen();
         System.out.println("*** NUEVA BICICLETA ***" );
         do {
             System.out.println("Referencia: ");
@@ -197,7 +198,7 @@ public class Ejercicio06 {
             validado = referencia.length() > 2;
             if(!validado) {
                 System.out.println("La referencia debe tener un mínimo de 3 caracteres");
-                Util.wait(milisec);
+                Ansi.wait(milisec);
             }
         } while (!validado);
 
@@ -234,7 +235,7 @@ public class Ejercicio06 {
             validado = marca.length() > 0;
             if(!validado) {
                 System.out.println("Debe indicar la marca");
-                Util.wait(milisec);
+                Ansi.wait(milisec);
             }
         } while (!validado);
 
@@ -244,7 +245,7 @@ public class Ejercicio06 {
             validado = modelo.length() > 1;
             if(!validado) {
                 System.out.println("El modelo debe tener un mínimo de 2 caracteres");
-                Util.wait(milisec);
+                Ansi.wait(milisec);
             }
         } while (!validado);
 
@@ -254,7 +255,7 @@ public class Ejercicio06 {
             validado = peso > 0;
             if(!validado) {
                 System.out.println("El peso debe ser mayor que 0");
-                Util.wait(milisec);
+                Ansi.wait(milisec);
             }
         } while (!validado);
 
@@ -264,7 +265,7 @@ public class Ejercicio06 {
             validado = tamanyo > 5;
             if(!validado) {
                 System.out.println("El tamaño no puede ser inferior a 5");
-                Util.wait(milisec);
+                Ansi.wait(milisec);
             }
         } while (!validado);
 
@@ -282,7 +283,7 @@ public class Ejercicio06 {
             }
             if(!validado) {
                 System.out.println("Debe responder con 's' ó 'n'");
-                Util.wait(milisec);
+                Ansi.wait(milisec);
             }
         } while (!validado);
 
@@ -298,7 +299,7 @@ public class Ejercicio06 {
             } catch (ParseException pe) {
                 validado = false;
                 System.out.println("El formato de la fecha de fabricación no es válido. Recuerde (dd-mm-yyyy).");
-                Util.wait(milisec);
+                Ansi.wait(milisec);
             }
         } while (!validado);
 
@@ -308,7 +309,7 @@ public class Ejercicio06 {
             validado = precio > 0;
             if(!validado) {
                 System.out.println("El precio debe ser mayor que 0");
-                Util.wait(milisec);
+                Ansi.wait(milisec);
             }
         } while (!validado);
 
@@ -318,7 +319,7 @@ public class Ejercicio06 {
             validado = stock >= 0;
             if(!validado) {
                 System.out.println("El stock no puede ser negativo");
-                Util.wait(milisec);
+                Ansi.wait(milisec);
             }
         } while (!validado);
 
@@ -331,7 +332,7 @@ public class Ejercicio06 {
             System.out.println("Se ha superado la capacidad del almacén");
         }
 
-        Util.wait(milisec);
+        Ansi.wait(milisec);
 
     }
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+import static org.apache.commons.lang3.StringUtils.isNumeric;
+
 public class Util{
     final static String ESC = "\u001b[";
     final static String ESCFINAL = "\u001B[0m";
@@ -64,7 +66,7 @@ public class Util{
         }while (!isValid);
         return data;
     }
-    public static int askInteger(String s) {
+    public static int askInteger(String s){
         boolean isValid = false;
         int data = 0;
         do {
@@ -74,7 +76,7 @@ public class Util{
                 isValid = true;
             } catch (NumberFormatException nfe) {
                 System.out.println("Enter numbers only");
-            } //todo : enviar excepcion al metodo superior
+            }
         }while (!isValid);
         return data;
     }
@@ -208,29 +210,72 @@ public class Util{
         }
         return newArray;
     }
+    public static boolean validarDNI(String input) {
+        String dniChars="TRWAGMYFPDXBNJZSQVHLCKE";
+        //removing spaces
+        String num = input.trim().replaceAll(" ", "").substring(0, 7);
+        //getting letter
+        char letter = input.charAt(8);
+        //getting num on letter position
+        int valid = Integer.parseInt(num) % 23;
+        if (input.length() != 9 && !isNumeric(num) && dniChars.charAt(valid) != letter) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
 
     /****** SIN return ******/
-    public static void wait(int milisegundos){
-        try {
-            Thread.sleep(milisegundos);
-        } catch (InterruptedException ie) {}
+
+    public static void analizarString(String s) {
+        s = s.replaceAll("\\s+", " ");//elimina spacios de +
+        s = s.trim();//asegura eliminar spacios
+        s = s + " ";//forzar mostrar ultima palabra
+        String receptor = "";
+        int lenghtString = s.length();
+        for (int i = 0; i < lenghtString; i++) {
+            if(s.charAt(i) != ' ') {
+                receptor = receptor + s.charAt(i);
+            }else if(s.charAt(i) == ' '){
+                System.out.printf("La palabra %s tiene %d vocales y %d consonantes \n",
+                receptor,contarVocal(receptor),contarConsonante(receptor));
+                receptor = "";//se borra al imprimir
+            }
+        }
     }
-    public static void clearScreen(){
-        System.out.println("Pulsa INTRO para continuar");
-        lector.nextLine();
-        //LIMPIA LA TERMINAL
-        System.out.print(ESC + "H");
-        System.out.print(ESC + "2J");
-        System.out.flush();
+
+    public static void showArray(int a[]){
+        System.out.printf("[");
+        for (int i = 0; i < a.length; i++) {
+            System.out.printf(" %d",a[i]);
+        }
+        System.out.printf(" ]\n");
     }
-    public static void hideCursor(){
-        System.out.printf(ESC + "?25l");
-        System.out.flush();
+    public static void showArray(double a[]){
+        System.out.printf("[");
+        for (int i = 0; i < a.length; i++) {
+            System.out.printf(" %.2f",a[i]);
+        }
+        System.out.printf(" ]\n");
     }
-    public static void showCursor(){
-        System.out.printf(ESC + "?25h");
-        System.out.flush();
+    public static void showArray(char a[]){
+        System.out.printf("[");
+        for (int i = 0; i < a.length; i++) {
+            System.out.printf(" %c",a[i]);
+        }
+        System.out.printf(" ]\n");
     }
+
+    public static void showParArray(int a[]) {
+        for (int i = 0; i < a.length; i+=2) {
+            if (a[i] % 2 == 0) {
+                System.out.printf("Position array[%d] = %d \n",
+                i , a[i]);
+            }
+        }
+    }
+
     public static void printContador(int num, char c){
         String numStr = String.valueOf(num);
         String charStr = String.valueOf(c);
@@ -248,72 +293,12 @@ public class Util{
             }
         }
     }
-    public static void printVertical(String nombre, int row , int col) {
-        clearScreen();
-        for (int i = 0; i < nombre.length(); i++){
-            printCharAt(nombre.charAt(i), i + row, col);
-        }
-        System.out.println();
-    }
-    public static void printCharAt(char caracter,int row, int col){
-        //imprime un caracter en la ROW y COLUMN parametrizada
-        System.out.print(ESC + row + ";" + col + "f");
-        System.out.print(caracter);
-        System.out.flush();
-    }
 
-    public static void analizarString(String s) {
-        s = s.replaceAll("\\s+", " ");//elimina spacios de +
-        s = s.trim();//asegura eliminar spacios 
-        s = s + " ";//forzar mostrar ultima palabra
-        String receptor = "";
-        int lenghtString = s.length();
-        for (int i = 0; i < lenghtString; i++) {
-            if(s.charAt(i) != ' ') {
-                receptor = receptor + s.charAt(i);
-            }else if(s.charAt(i) == ' '){
-                System.out.printf("La palabra %s tiene %d vocales y %d consonantes \n",
-                receptor,contarVocal(receptor),contarConsonante(receptor));
-                receptor = "";//se borra al imprimir 
-            }
-        }
-    }
-    public static void showArray(int a[]){
-        System.out.printf("[");
-        for (int i = 0; i < a.length; i++) {
-            System.out.printf(" %d",a[i]);
-        }
-        System.out.printf(" ]\n");
-    }
-    public static void showArray(double a[]){
-        System.out.printf("[");
-        for (int i = 0; i < a.length; i++) {
-            System.out.printf(" %.2f",a[i]);
-        }
-        System.out.printf(" ]\n");
-    }
-    
-    public static void showArray(char a[]){
-        System.out.printf("[");
-        for (int i = 0; i < a.length; i++) {
-            System.out.printf(" %c",a[i]);
-        }
-        System.out.printf(" ]\n");
-    }
-    
-    public static void showParArray(int a[]) {
-        for (int i = 0; i < a.length; i+=2) {
-            if (a[i] % 2 == 0) {
-                System.out.printf("Position array[%d] = %d \n",
-                i , a[i]);
-            }
-        }
-    }
     /**
      * Search in the array to multiplo and print them
      * @param a
      * @param multi
-     * 
+     *
      **/
     public static void showMultiploArray(int a[], int multi) {
         for (int i = 1; i < a.length; i++) {

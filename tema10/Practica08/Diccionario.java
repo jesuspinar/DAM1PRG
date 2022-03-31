@@ -45,7 +45,7 @@ public class Diccionario {//Modelo
         return null;
     }
     /**
-     * Returns the entry
+     * Returns the entry OR NULL if not exits
      * @param i
      * @return
      */

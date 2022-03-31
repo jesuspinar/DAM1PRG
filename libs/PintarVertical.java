@@ -13,7 +13,7 @@ public class PintarVertical {
         System.out.println("Dime tu nomnbre");
         nombre = lector.nextLine();
         lector.close();
-        
-        Util.printVertical(nombre, ROW, COLUMN);
+
+        Ansi.printVertical(nombre, ROW, COLUMN);
     }
 }
