@@ -1,12 +1,13 @@
 package com.programacionOO.tema10.Practica10;
 
 import com.programacionOO.tema10.Practica05.Estadisticas;
+import com.programacionOO.tema10.Practica10.Config.Config;
 
 import java.util.GregorianCalendar;
 
 public class Hijo {
-    private static int cont = 0;
-    private int id;
+    private static int cont = Config.STARTER_ID;
+    private int id ;
     private String nombre;
     private String apellidos;
     private GregorianCalendar fechaNac;
@@ -14,7 +15,7 @@ public class Hijo {
 
 
     public Hijo(String nombre, String apellidos,GregorianCalendar fechaNac) {
-        this.id = ++cont;
+        this.id = cont++;
         this.nombre = nombre;
         this.apellidos = apellidos;
         edad = Estadisticas.calcularEdad(fechaNac);

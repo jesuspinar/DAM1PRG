@@ -9,9 +9,10 @@ import com.programacionOO.tema10.anexoIterator.MyRandom;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Locale;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GestorDatos {
-    private ArrayList<Empleado> empleados;
+    private final ArrayList<Empleado> empleados;
 
     public GestorDatos() {this(10);}
 
@@ -39,8 +40,7 @@ public class GestorDatos {
 
         Empleado empleado = new Empleado(nif,nombre,apellido,fechaNac,sueldo);
         empleados.add(empleado);
-        //todo: mostrar id o mensaje,,,
-        System.out.println(empleado.toString());
+
         return true;
     }
     public boolean nuevoHijo() throws NotEmployeException {
@@ -57,61 +57,120 @@ public class GestorDatos {
             day = Util.askInteger2("El day en el que nacio" ,Config.MIN_DAY,Config.MAX_DAY);
             fechaNac = new GregorianCalendar(year,month,day);
 
-            //todo: mostrar id o mensaje,,,
-            return empleados.get(id).addHijo(nombre,apellido,fechaNac);
+            return empleados.get(busquedaPosicion(id)).addHijo(nombre,apellido,fechaNac);
         }
         return false;
     }
     public boolean modificarSueldo() throws NotEmployeException {
-        int id = Util.askInteger("Intruzca su id empleado:");
-        if (busquedaEmpleado(id)){
+        int idEmpleado = Util.askInteger("Intruzca su id empleado:");
+        if (busquedaEmpleado(idEmpleado)){
             float sueldoNuevo = Util.askInteger2("Cuanto desea ganar?",Config.MIN_SUELDO, Config.MAX_SUELDO);
-            //todo: mostrar id o mensaje,,,
-            return empleados.get(id).modifySueldo(sueldoNuevo);
-
+            return empleados.get(busquedaPosicion(idEmpleado)).modifySueldo(sueldoNuevo);
         }
         return false;
     }
     public boolean borrarEmpleado() throws NotEmployeException {
-
-        int id = Util.askInteger("Intruzca su id empleado:");
-        if (busquedaEmpleado(id)){
+        Empleado empleado;
+        int idEmpleado = Util.askInteger("Intruzca su id empleado:");
+        if (busquedaEmpleado(idEmpleado)){
             System.out.println("Se dispone a borrar dicho empleado esta seguro?");
-            int option = Util.askInteger("1.-Borrar \n0.-Exit");
+            int option = Util.askInteger("1.-Borrar\n0.-Exit");
             if (option == 0){return false;}
             else {
-                empleados.remove(empleados.get(id));
-                //todo: mostrar id o mensaje,,,
+                empleados.remove(busquedaPosicion(idEmpleado));
                 return true;
             }
         }
         return false;
     }
     public boolean borrarHijo() throws NotEmployeException {
-        int id = Util.askInteger("Intruzca su id empleado:");
-        if (busquedaEmpleado(id)){
-            System.out.println(empleados.get(id).mostrarHijos());
+        int idEmpleado = Util.askInteger("Intruzca su id empleado:");
+        if (busquedaEmpleado(idEmpleado)){
+            System.out.println(empleados.get(idEmpleado).mostrarHijos());
             int idHijo = Util.askInteger("Intruzca su id de su Hijo:");
 
             System.out.println("Se dispone a borrar hijo del empleado esta seguro?");
-            int option = Util.askInteger("1.-Borrar \n0.-Exit");
+            int option = Util.askInteger("1.-Borrar\n0.-Exit");
             if (option == 0){return false;}
             else {
-                if (empleados.contains(empleados.get(id).containHijo(idHijo))){
-                    empleados.get(id).removeHijo(idHijo);
-                }
-                //todo: mostrar id o mensaje,,,
+                empleados.get(busquedaPosicion(idEmpleado)).removeHijo(idHijo);
                 return true;
             }
         }
         return false;
     }
+    /* BUSQUEDAS DEL SISTEMA ...*/
+
+    /**
+     * Busca al empleado por su id, usado internamente
+     * @param id
+     * @return la posicion en el arraylist
+     * @throws NotEmployeException
+     */
+    private int busquedaPosicion(int id) throws NotEmployeException {
+        for (Empleado i : empleados ) {
+            if (id == i.getId()){
+                return empleados.indexOf(i);
+            }
+        }
+        throw new NotEmployeException("No esta registrado como empleado");
+    }
 
     public boolean busquedaEmpleado(int id) throws NotEmployeException {
-        if(empleados.get(id) != null){
-            return true;
-        }else throw new NotEmployeException("No esta registrado como empleado");
+        // todo : metodo iterator para busquedas globales
+        for (Empleado i : empleados ) {
+            if (id == i.getId()){
+                return true;
+            }
+        }
+        throw new NotEmployeException("No esta registrado como empleado");
     }
+    public Empleado busquedaEmpleado(String nif) throws NotEmployeException {
+        for (Empleado i : empleados ) {
+            if (nif.equalsIgnoreCase(i.getNif())){
+                return i;
+            }
+        }
+        throw new NotEmployeException("No esta registrado como empleado");
+    }
+    public ArrayList<Empleado> busquedaNombres(String nombre) throws NotEmployeException {
+        ArrayList<Empleado> r = new ArrayList<>();
+        if (nombre != null){
+            for (Empleado empleado : empleados ) {
+                if (nombre.equalsIgnoreCase(empleado.getNombre())){
+                    r.add(empleado);
+                }
+            }
+            return r;
+        }
+        throw new NotEmployeException("No esta registrado como empleado");
+    }
+
+    public ArrayList<Empleado> busquedaEdad(int min,int max) {
+        ArrayList<Empleado> r = new ArrayList<>();
+        for (Empleado empleado : empleados ) {
+            if (empleado.getEdad() >= min && empleado.getEdad()  <= max) {
+                r.add(empleado);
+            }
+        }
+        return r;
+    }
+    public ArrayList<Empleado> busquedaSueldo(int min,int max) {
+        ArrayList<Empleado> r = new ArrayList<>();
+        for (Empleado empleado : empleados ) {
+            if (empleado.getSueldo() >= min && empleado.getSueldo()  <= max) {
+                r.add(empleado);
+            }
+        }
+        return r;
+    }
+    public boolean mostrarHijosMenores(){
+        for (Empleado empleado: empleados) {
+            empleado.mostrarMenoresEdad();
+        }
+        return true;
+    }
+
     private boolean generateData(int intial){
 
         Faker faker = new Faker(new Locale("ES"));

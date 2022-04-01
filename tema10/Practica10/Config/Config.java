@@ -2,6 +2,7 @@ package com.programacionOO.tema10.Practica10.Config;
 
 public class Config {
     public static final boolean DEBUG = true;
+    public static final int STARTER_ID = 0;
     public static final int MAX_DNI = 50000;
     public static final int MIN_DNI = 40000;
     public static final int MAX_SUELDO = 700;
@@ -14,5 +15,6 @@ public class Config {
     public static final int MAX_DAY = 28;
     public static final int MIN_NAME = 3;
     public static final int MAX_NAME = 15;
+
 
 }

@@ -1,6 +1,7 @@
 package com.programacionOO.tema10.Practica10;
 
 import com.programacionOO.tema10.Practica05.Estadisticas;
+import com.programacionOO.tema10.Practica10.employExceptions.NotEmployeException;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -17,8 +18,8 @@ public class Empleado {
     private ArrayList<Hijo> hijos;
 
 
-    public Empleado(String nif,String nombre,String apellidos,GregorianCalendar fecha, float sueldo) {
-        this.id = ++cont;
+    public Empleado(String nif, String nombre, String apellidos, GregorianCalendar fecha, float sueldo) {
+        this.id = cont++;
         this.nif = nif;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -28,24 +29,48 @@ public class Empleado {
         hijos = new ArrayList<>();
     }
 
+    public String getNif() {
+        return nif;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public float getSueldo() {
+        return sueldo;
+    }
 
     public String getApellidos() {
         return apellidos;
     }
 
-    public boolean addHijo(String nombre,String apellido,GregorianCalendar fechaNac){
-        Hijo hijo  = new Hijo(nombre,apellido,fechaNac);
+    public boolean addHijo(String nombre, String apellido, GregorianCalendar fechaNac) {
+        Hijo hijo = new Hijo(nombre, apellido, fechaNac);
         hijos.add(hijo);
         return true;
     }
-    public boolean removeHijo(int idHijo){
-        hijos.remove(hijos.get(idHijo));
+
+    public boolean removeHijo(int idHijo) {
+        hijos.remove(busquedaPosicion(idHijo));
         return true;
     }
 
-    public boolean containHijo(int idHijo) {
-        if (hijos.get(idHijo) != null)return true;
-        return false;
+    private int busquedaPosicion(int id) {
+        for (Hijo i : hijos ) {
+            if (id == i.getId()){
+                return hijos.indexOf(i);
+            }
+        }
+        return -1;
     }
 
     public boolean modifySueldo(float sueldo){
@@ -57,16 +82,26 @@ public class Empleado {
         return "Hijos : " + hijos;
     }
 
+    /**
+     * Muestra los hijos menores de edad =)
+     * @return
+     */
+    public boolean mostrarMenoresEdad(){
+        for (Hijo hijo: hijos) {
+            if (hijo.getEdad() < 18)
+                System.out.println(hijo);
+        }
+        return true;
+    }
+
     @Override
     public String toString() {
-        return "Empleado{" +
-                "id=" + id +
+        return  "id=" + id +
                 ", nif='" + nif + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", apellidos='" + apellidos + '\'' +
                 ", sueldo=" + sueldo +
                 ", edad=" + edad +
-                ", hijos=" + hijos +
-                '}';
+                ", hijos=" + hijos ;
     }
 }
