@@ -9,7 +9,6 @@ import com.programacionOO.tema10.anexoIterator.MyRandom;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Locale;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GestorDatos {
     private final ArrayList<Empleado> empleados;
