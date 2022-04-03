@@ -32,6 +32,16 @@ public class Centro {
             generarDatosCentro(inititalCapacity);
         }
     }
+    public boolean nuevoAlumno(){
+        String nombre = Util.askStringRestricted("Introduzca el nombre del alumno", Config.MIN_NAME,Config.MAX_NAME);
+//      todo : registrar nuevo alumno
+//        alumnos.add();
+        return true;
+    }
+    public boolean mostrarAlumnosPorGrupo(){
+        String nombreGrupo = Util.askStringRestricted("Introduce el nombre del grupo", Config.MIN_NAME, Config.MAX_NAME);
+        return true;
+    }
     /***** GENERAR DATOS DE PRUEBAS ****/
     private boolean generarDatosCentro(int init) {
         generarProfesores(init);

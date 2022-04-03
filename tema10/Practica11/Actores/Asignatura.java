@@ -30,6 +30,6 @@ public class Asignatura {
     public String toString() {
         return  "id = " + id +
                 ", nombre = " + nombre +
-                ", profesores " + profesor + "\n";
+                ", profesores " + profesor;
     }
 }

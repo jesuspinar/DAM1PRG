@@ -29,6 +29,6 @@ public class Profesor {
     public String toString() {
         return  "dni = " + dni +
                 ", nombre = " + nombre +
-                ", sueldo = " + sueldo ;
+                ", sueldo = " + sueldo + "\n";
     }
 }
