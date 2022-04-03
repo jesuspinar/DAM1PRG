@@ -1,5 +1,7 @@
 package com.programacionOO.tema10.Practica10.Config;
 
+///se considera clase estatica ya que ningun atributo es dinamico
+// por tanto no necesita de ningun constructor u Objeto para su uso
 public class Config {
     public static final boolean DEBUG = true;
     public static final int STARTER_ID = 0;

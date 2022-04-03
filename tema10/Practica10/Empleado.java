@@ -5,6 +5,7 @@ import com.programacionOO.tema10.Practica10.employExceptions.NotEmployeException
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.Objects;
 
 public class Empleado {
     private static int cont = 0;
@@ -92,6 +93,19 @@ public class Empleado {
                 System.out.println(hijo);
         }
         return true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;//si tienen el mismo puntero a direccion de meemoria
+        if (o == null || getClass() != o.getClass()) return false;
+        Empleado empleado = (Empleado) o;
+        return nif.equals(empleado.nif);
+    }
+
+    @Override
+    public int hashCode() {///identificador unico
+        return Objects.hash(nif);//utiliza como funcion hash el dni , no puntero a direccion de meemoria
     }
 
     @Override

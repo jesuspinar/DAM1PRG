@@ -11,7 +11,7 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class GestorDatos {
-    private final ArrayList<Empleado> empleados;
+    private final ArrayList<Empleado> empleados; //final la variable del puntero al array no puede cambiar
 
     public GestorDatos() {this(10);}
 
