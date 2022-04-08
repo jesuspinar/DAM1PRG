@@ -87,7 +87,7 @@ public class Util{
             data = askInteger(s);
             isValid = data >= min && data <= max;
             if (!isValid)
-                System.out.printf("el numebroo tiene qu estar entre %d , %d", min,max);
+                System.out.printf("el numero tiene que estar entre %d , %d\n", min,max);
         }while (!isValid);
         return data;
     }

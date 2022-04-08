@@ -1,4 +1,4 @@
-package com.programacionOO.tema10.Practica11.Actores;
+package com.programacionOO.tema10.Practica11.Modelo;
 
 import com.programacionOO.tema10.Practica11.Configuracion.Config;
 

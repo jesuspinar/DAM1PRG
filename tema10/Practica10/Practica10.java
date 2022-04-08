@@ -3,6 +3,7 @@ package com.programacionOO.tema10.Practica10;
 import com.programacionOO.libs.MenuBuilder;
 import com.programacionOO.libs.Util;
 import com.programacionOO.tema10.Practica10.employExceptions.NotEmployeException;
+import com.programacionOO.tema10.anexoIterator.InvalidRangeException;
 
 public class Practica10 {
     private final String menuMain = "Gestión empleados";
@@ -23,7 +24,7 @@ public class Practica10 {
 
     private GestorDatos gestorDatos;
 
-    public Practica10(int intit) throws NotEmployeException {
+    public Practica10(int intit) throws NotEmployeException, InvalidRangeException {
         gestorDatos = new GestorDatos(intit);
         int opcion = 0;
         do {

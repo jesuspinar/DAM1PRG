@@ -1,6 +1,4 @@
-package com.programacionOO.tema10.Practica11.Actores;
-
-import java.util.HashMap;
+package com.programacionOO.tema10.Practica11.Modelo;
 
 public class Profesor {
     private String dni;

@@ -9,9 +9,12 @@ public class MyRandom implements Iterable<Integer>,Iterator<Integer>{
     private int MAX_VALUE;
     private int MIN_VALUE;
 
-    public MyRandom(int count, int max, int min) {
+    public MyRandom(int count, int max, int min) throws InvalidRangeException {
         random = new Random();
         this.count = count;
+        if (min < 0 || max < 0 || max < min) {
+            throw new InvalidRangeException("Max > Min and Min > 0 and Max > 0");
+        }
         MAX_VALUE = max;
         MIN_VALUE = min;
     }
@@ -20,6 +23,12 @@ public class MyRandom implements Iterable<Integer>,Iterator<Integer>{
         this.count = count;
 
     }
+//    private void init(int count, int max, int min){
+//        this.count = count;
+//        if (min < 0 || max < 0 || max < min) {
+//            throw new InvalidRangeException("Max > Min and Min > 0 and Max > 0");
+//        }
+//    }
 
     @Override
     public Iterator<Integer> iterator() {

@@ -1,4 +1,4 @@
-package com.programacionOO.tema10.Practica11.Actores;
+package com.programacionOO.tema10.Practica11.Modelo;
 
 import com.programacionOO.tema10.Practica11.Configuracion.Config;
 
@@ -10,6 +10,7 @@ public class Alumno {
     private String nombre;
     private Grupo grupo;
     private ArrayList<Asignatura> asignaturas;
+    //todo crear clase matricula para tener difentes cursos
 
     public Alumno(String nombre, Grupo grupo, ArrayList<Asignatura> asignaturas) {
         this.id = ++cont;

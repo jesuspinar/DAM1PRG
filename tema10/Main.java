@@ -13,6 +13,7 @@ import com.programacionOO.tema10.Practica09.Practica09;
 import com.programacionOO.tema10.Practica10.Practica10;
 import com.programacionOO.tema10.Practica10.employExceptions.NotEmployeException;
 import com.programacionOO.tema10.Practica11.Practica11;
+import com.programacionOO.tema10.acontinuacion.Prueba;
 import com.programacionOO.tema10.anexoIterator.MyRandom;
 
 import java.io.IOException;
@@ -29,8 +30,8 @@ public class Main{
 //        Practica08 practica08 = new Practica08();
 //        Practica09 practica09 = new Practica09();
 //        Practica10 practica10 = new Practica10(15);
-        Practica11 practica11 = new Practica11(15);
-
+//        Practica11 practica11 = new Practica11(15);
+        Prueba prueba = new Prueba();
 //
     }
 }

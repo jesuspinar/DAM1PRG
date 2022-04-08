@@ -2,8 +2,9 @@ package com.programacionOO.tema10.Practica11.Controlador;
 
 import com.github.javafaker.Faker;
 import com.programacionOO.libs.Util;
-import com.programacionOO.tema10.Practica11.Actores.*;
+import com.programacionOO.tema10.Practica11.Modelo.*;
 import com.programacionOO.tema10.Practica11.Configuracion.Config;
+import com.programacionOO.tema10.anexoIterator.InvalidRangeException;
 import com.programacionOO.tema10.anexoIterator.MyRandom;
 
 import java.util.ArrayList;
@@ -17,11 +18,11 @@ public class Centro {
     private ArrayList<Grupo> grupos;
     private ArrayList<Aula> aulas;
 
-    public Centro(){
+    public Centro() throws InvalidRangeException {
         this(10);
     }
 
-    public Centro(int inititalCapacity) {
+    public Centro(int inititalCapacity) throws InvalidRangeException {
         alumnos = new ArrayList<>(inititalCapacity);
         asignaturas = new ArrayList<>(inititalCapacity);
         profesores = new ArrayList<>(inititalCapacity);
@@ -33,17 +34,67 @@ public class Centro {
         }
     }
     public boolean nuevoAlumno(){
-        String nombre = Util.askStringRestricted("Introduzca el nombre del alumno", Config.MIN_NAME,Config.MAX_NAME);
 //      todo : registrar nuevo alumno
-//        alumnos.add();
-        return true;
+        if(asignaturas.size() == 0 && grupos.size() == 0){
+            System.out.println("Lo sentimos no hay asignaturas o grupos para cursar");
+            return false;
+        }else{
+            String nombre = Util.askStringRestricted("Introduzca el nombre del alumno", Config.MIN_NAME,Config.MAX_NAME);
+            System.out.println(mostrarGrupo());
+            String nombreGrupo = Util.askStringRestricted("Elija el grupo ",3,15);
+            Grupo grupo = null;
+            /*BUSCA GRUPO*/
+            for (Grupo value : grupos) {
+                if (nombreGrupo.equalsIgnoreCase(value.getNombre())) {
+                    grupo = value;
+                } else {
+                    System.out.println("Grupo no encontrado intentelo de nuevo");
+                    return false;
+                }
+            }
+
+
+            System.out.println(mostrarAsignaturas());
+            int num_asignaturas = Util.askInteger2("Cuantas quieres cursar?", 2,9);
+            ArrayList<Asignatura> nuevasAsignaturas = new ArrayList<>(num_asignaturas);
+            /*BUSCA ASIGNATURAS*/
+            do {
+                String nombreAsignatura = Util.askStringRestricted("Elije una asignatura",5,20);
+
+                for (Asignatura asignatura : asignaturas) {
+                    if (nombreAsignatura.equalsIgnoreCase(asignatura.getNombre())) {
+                        num_asignaturas--;
+                        nuevasAsignaturas.add(asignatura);
+                    }
+
+                }
+            }while (num_asignaturas != 0);
+
+            assert grupo != null;
+            Alumno alumno = new Alumno(nombre,grupo,nuevasAsignaturas);
+            alumnos.add(alumno);
+            return true;
+        }
+
+
     }
+
+    private Asignatura buscarAsignatura(String nombreAsignatura) {
+        for (Asignatura asignatura : asignaturas) {
+            if (nombreAsignatura.equalsIgnoreCase(asignatura.getNombre())) {
+                return asignatura;
+            }
+        }
+        return null; // modificar para enviar excepcion
+    }
+
     public boolean mostrarAlumnosPorGrupo(){
         String nombreGrupo = Util.askStringRestricted("Introduce el nombre del grupo", Config.MIN_NAME, Config.MAX_NAME);
+        //todo : mostrar alumnos por grupo
         return true;
     }
     /***** GENERAR DATOS DE PRUEBAS ****/
-    private boolean generarDatosCentro(int init) {
+    private boolean generarDatosCentro(int init) throws InvalidRangeException {
         generarProfesores(init);
         generarAsignaturas();//se adapta al ArrayList de profesores
         generarAulas();
@@ -52,7 +103,7 @@ public class Centro {
 //        System.out.println(toString());
         return true;
     }
-    private boolean generarProfesores(int intitalCapacity) {
+    private boolean generarProfesores(int intitalCapacity) throws InvalidRangeException {
         Faker faker = new Faker(new Locale("ES"));
         String dni;
         String nombre;
@@ -127,6 +178,12 @@ public class Centro {
     }
     public String mostrarProfesores() {
         return profesores.toString();
+    }
+    public String mostrarAsignaturas() {
+        return asignaturas.toString();
+    }
+    public String mostrarGrupo() {
+        return grupos.toString();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.programacionOO.tema10.Practica11.Actores;
+package com.programacionOO.tema10.Practica11.Modelo;
 
 import com.programacionOO.tema10.Practica11.Configuracion.Config;
 
@@ -7,6 +7,7 @@ public class Asignatura {
     private int id ;
     private String nombre;
     private Profesor profesor;
+    // todo : una asignaturas deberia poder ser impartida por mas de un profe
 
     public Asignatura(String nombre,Profesor profesor) {
         this.nombre = nombre;

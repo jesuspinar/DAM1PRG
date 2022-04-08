@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import com.programacionOO.libs.Util;
 import com.programacionOO.tema10.Practica10.Config.Config;
 import com.programacionOO.tema10.Practica10.employExceptions.NotEmployeException;
+import com.programacionOO.tema10.anexoIterator.InvalidRangeException;
 import com.programacionOO.tema10.anexoIterator.MyRandom;
 
 import java.util.ArrayList;
@@ -13,9 +14,10 @@ import java.util.Locale;
 public class GestorDatos {
     private final ArrayList<Empleado> empleados; //final la variable del puntero al array no puede cambiar
 
-    public GestorDatos() {this(10);}
+    public GestorDatos() throws InvalidRangeException {
+        this(10);}
 
-    public GestorDatos(int initalCapacity) {
+    public GestorDatos(int initalCapacity) throws InvalidRangeException {
         empleados = new ArrayList<>(initalCapacity);
         if (Config.DEBUG == true) generateData(initalCapacity);
     }
@@ -170,7 +172,7 @@ public class GestorDatos {
         return true;
     }
 
-    private boolean generateData(int intial){
+    private boolean generateData(int intial) throws InvalidRangeException {
 
         Faker faker = new Faker(new Locale("ES"));
         int nif;
