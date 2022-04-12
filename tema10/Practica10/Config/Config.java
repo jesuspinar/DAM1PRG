@@ -10,11 +10,11 @@ public class Config {
     public static final int MAX_SUELDO = 700;
     public static final int MIN_SUELDO = 100;
     public static final int MIN_YEAR = 1959;
-    public static final int MAX_YEAR = 2000;
+    public static final int MAX_YEAR = 2022;
     public static final int MIN_MONTH = 0;
     public static final int MAX_MONTH = 11;
     public static final int MIN_DAY = 1;
-    public static final int MAX_DAY = 28;
+    public static final int MAX_DAY = 31;
     public static final int MIN_NAME = 3;
     public static final int MAX_NAME = 15;
 

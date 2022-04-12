@@ -13,7 +13,18 @@ public class Punto {
     }
     public double distancia(Punto punto){
         //codigo para calcular distancia
-        return 0;
+        return  Math.sqrt(Math.pow(this.x - punto.getX(),2) - Math.pow(this.y - punto.getY(),2));
+    }
+    public double distancia(Punto p1, Punto p2){
+        return p1.distancia(p2);
+    }
+
+    private double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
     }
 
     @Override
