@@ -4,23 +4,23 @@ import com.programacionOO.tema11.Practica05.Stack;
 
 public abstract class Material {
     private final int RESISTENCIA_DEFAULT = 10;
-    private final Stack CAPACIDAD_MAX = Stack.FULL;
+//    private final Stack CAPACIDAD_MAX = Stack.FULL;
 
-    private Stack capacidad;
+//    private Stack capacidad;
 
     private int resistencia;
     private String nombre;
     private int cantidad;
 
     public Material(String nombre){
-        capacidad = CAPACIDAD_MAX;
+//        capacidad = ;
         resistencia = RESISTENCIA_DEFAULT;
         cantidad = 0;
         this.nombre = nombre;
     }
 
     public Material(int resistencia, String nombre) {
-        capacidad = CAPACIDAD_MAX;
+//        capacidad = CAPACIDAD_MAX;
         this.resistencia = resistencia;
         this.nombre = nombre;
     }

@@ -66,11 +66,12 @@ public class Practica05 {
             m1 = new Madera(i + 5, maderas[i]);
             espada = new Espada(m1, Util.random(1,5));
             pico = new Pico(p1);
-            dock[i] = m1;
+            dock[i] = pico;
         }
 
     }
     //todo : como diferenciar que clase es una espada y cual un pico cuando se muestran
+    // instanceOf;
 
 }
 

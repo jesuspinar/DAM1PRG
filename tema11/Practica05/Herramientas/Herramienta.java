@@ -5,9 +5,9 @@ import com.programacionOO.tema11.Practica05.Stack;
 
 public abstract class Herramienta {
     private final int ATAQUE_DEFAULT = 1;
-    private final Stack CAPACIDAD_MAX = Stack.UNIT;
+//    private final Stack CAPACIDAD_MAX = Stack.UNIT;
 
-    private Stack capacidad;
+//    private Stack capacidad;
 
     private final int ataque;
     private final int vida;
@@ -16,7 +16,7 @@ public abstract class Herramienta {
     private int cantidad;
 
     public Herramienta(Material tipo){
-        capacidad = CAPACIDAD_MAX;
+//        capacidad = CAPACIDAD_MAX;
         cantidad = 1;
         ataque = ATAQUE_DEFAULT;
         this.vida = tipo.getResistencia();
@@ -25,16 +25,16 @@ public abstract class Herramienta {
 
     }
     public Herramienta(Material tipo, int ataque){
-        capacidad = CAPACIDAD_MAX;
+//        capacidad = CAPACIDAD_MAX;
         this.ataque = ataque;
         this.vida = tipo.getResistencia();
         this.nombre = tipo.getNombre();
         material = tipo;
     }
 
-    public Stack getCapacidad() {
-        return capacidad;
-    }
+//    public Stack getCapacidad() {
+//        return capacidad;
+//    }
 
     @Override
     public String toString() {

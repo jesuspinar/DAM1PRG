@@ -1,6 +1,7 @@
 package com.programacionOO.libs;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -114,7 +115,19 @@ public class Util{
         System.out.println(s);
         return Float.parseFloat(lector.nextLine());
     }
-    
+    public static int calcularEdad(Calendar fechaNac) {
+        Calendar fechaActual = Calendar.getInstance();
+        int years = fechaActual.get(Calendar.YEAR) - fechaNac.get(Calendar.YEAR);
+        int months = fechaActual.get(Calendar.MONTH) - fechaNac.get(Calendar.MONTH);
+        int days = fechaActual.get(Calendar.DAY_OF_MONTH) - fechaNac.get(Calendar.DAY_OF_MONTH);
+        // Aún no es el mes de su cumpleaños o
+        // es el mes pero no ha llegado el día.
+        if(months < 0 || (months==0 && days < 0)) {
+            years--;
+        }
+        return years;
+    }
+
     public static int contarVocal(String s) {
         int contadorVocal = 0;
         s = s.toLowerCase();
