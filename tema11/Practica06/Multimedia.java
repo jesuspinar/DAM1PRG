@@ -67,7 +67,7 @@ public abstract class Multimedia {
                 ", fecha = " + sdf +
                 '}';
     }
-
+    //COMPARA SI DOS OBJETOS SON IGUALES
     public boolean equals(Multimedia multimedia) {
         if (this == multimedia) return true;
         if (multimedia == null || getClass() != multimedia.getClass()) return false;
