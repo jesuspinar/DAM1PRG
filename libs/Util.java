@@ -1,9 +1,6 @@
 package com.programacionOO.libs;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 import static org.apache.commons.lang3.StringUtils.isNumeric;
 
@@ -236,8 +233,22 @@ public class Util{
         } else {
             return true;
         }
-
     }
+    public static int fact(int n){
+        if(n == 0 )return 1;
+        else return n * fact(n-1);
+    }
+
+    /**
+     * Generartes a random date
+     * @return
+     */
+    public static GregorianCalendar generarFechas(int minYear){
+        int currentYear = new GregorianCalendar().get(Calendar.YEAR);
+        return new GregorianCalendar(Util.random(minYear, currentYear),
+                Util.random(Calendar.JANUARY, Calendar.DECEMBER), Util.random(1,28));
+    }
+
 
     /****** SIN return ******/
 

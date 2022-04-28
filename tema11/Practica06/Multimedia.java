@@ -11,15 +11,11 @@ public abstract class Multimedia {
     private Formato formato;
     private GregorianCalendar fecha;
 
-    //NUEVA IMPLEMENTACION
-    private Alquiler alquiler;
-
     public Multimedia(String titulo, String autor, Formato formato, GregorianCalendar fecha) {
         this.titulo = titulo;
         this.autor = autor;
         this.formato = formato;
         this.fecha = fecha;
-//        alquiler = ...;
     }
 
     public String getTitulo() {
@@ -68,10 +64,12 @@ public abstract class Multimedia {
                 '}';
     }
     //COMPARA SI DOS OBJETOS SON IGUALES
-    public boolean equals(Multimedia multimedia) {
+    @Override
+    public boolean equals(Object multimedia) {
         if (this == multimedia) return true;
-        if (multimedia == null || getClass() != multimedia.getClass()) return false;
-        return Objects.equals(titulo, multimedia.titulo) && Objects.equals(autor, multimedia.autor) && formato == multimedia.formato && Objects.equals(fecha, multimedia.fecha);
+        if (multimedia == null || this.getClass() != multimedia.getClass()) return false;
+        Multimedia multimedia1 =(Multimedia) multimedia;
+        return this.titulo.equals(multimedia1.titulo) && autor.equals(multimedia1.autor) && formato == multimedia1.formato;
     }
 
 }

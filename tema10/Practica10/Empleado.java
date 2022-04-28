@@ -97,15 +97,15 @@ public class Empleado {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;//si tienen el mismo puntero a direccion de meemoria
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) return true;//si tienen el mismo puntero a direccion de memoria
+        if (o == null || this.getClass() != o.getClass()) return false;
         Empleado empleado = (Empleado) o;
         return nif.equals(empleado.nif);
     }
 
     @Override
     public int hashCode() {///identificador unico
-        return Objects.hash(nif);//utiliza como funcion hash el dni , no puntero a direccion de meemoria
+        return Objects.hash(nif);//utiliza como funcion hash el dni , no puntero a direccion de memoria
     }
 
     @Override

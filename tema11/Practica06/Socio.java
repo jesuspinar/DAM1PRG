@@ -7,13 +7,15 @@ public abstract class Socio {
 
     private static int cont_id = 0;
 
-    private String nif;
-    private String nombre;
-    private GregorianCalendar fechaNac;
-    private String poblacion;
+    private final int id;
+    private final String nif;
+    private final String nombre;
+    private final GregorianCalendar fechaNac;
+    private final String poblacion;
     private int edad;
 
     public Socio(String nif, String nombre, GregorianCalendar fechaNac, String poblacion) {
+        this.id = ++cont_id;
         this.nif = nif;
         this.nombre = nombre;
         this.fechaNac = fechaNac;
