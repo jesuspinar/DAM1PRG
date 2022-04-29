@@ -2,7 +2,6 @@ package com.programacionOO.tema11.Practica06;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
-import java.util.Objects;
 
 public abstract class Multimedia {
 

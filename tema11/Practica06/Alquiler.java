@@ -14,7 +14,6 @@ public class Alquiler {
     private static final long MAX_DAYS = DAY*3;//3dias
     private static int cont_id = 0;
 
-    //    private double recargo;
     private int id;
     private double precio;
     private GregorianCalendar fechaAlquiler;
