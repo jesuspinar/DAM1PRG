@@ -10,20 +10,56 @@ import java.util.GregorianCalendar;
 public class Alquiler {
     private static final int DISCOUNT_YEAR_MOVIE = 2012;
     private static final int DISCOUNT_YEAR_GAME = 2010;
+    private static final long DAY = 86400000;//1dia en milis
+    private static final long MAX_DAYS = DAY*3;//3dias
     private static int cont_id = 0;
 
+    //    private double recargo;
+    private int id;
     private double precio;
     private GregorianCalendar fechaAlquiler;
     private GregorianCalendar fechaDevolucion;
     private ArrayList<Multimedia> productosAlquilados;
 
-    public Alquiler(GregorianCalendar fechaAlquiler, GregorianCalendar fechaDevolucion, ArrayList<Multimedia> productosAlquilados) {
-        this.fechaAlquiler = fechaAlquiler;
-        this.fechaDevolucion = fechaDevolucion;
-        this.productosAlquilados = productosAlquilados;
-        precio = 4 * contarMultimedia();
-        rebajarAlquiler();
+    public Alquiler(Socio socio,GregorianCalendar fechaAlquiler, GregorianCalendar fechaDevolucion,
+                    ArrayList<Multimedia> productosAlquilados) throws RecargosPendientesException {
+        if (tieneRecargo(socio)){throw new RecargosPendientesException("Socio con recargos, no es posible alquilar");}
+        else {
+            id = ++cont_id;
+            this.fechaAlquiler = fechaAlquiler;
+            this.fechaDevolucion = fechaDevolucion;
+            this.productosAlquilados = productosAlquilados;
+            precio = 4 * contarMultimedia();
+            rebajarAlquiler();
+        }
     }
+
+    /**
+     * Comprueba los dias que pasaron en funcion al retraso
+     * @return
+     */
+    public int comprobarRetrasoPlazo(){
+        long diferecia = fechaDevolucion.getTimeInMillis() - fechaAlquiler.getTimeInMillis();
+        int numDias = 0;
+        if (diferecia > MAX_DAYS){
+            long resto = diferecia - MAX_DAYS;
+            do{
+                resto -= DAY;
+                numDias++;
+            }
+            while(resto > DAY);
+            return numDias;
+        }
+        return 0;
+    }
+
+    public boolean tieneRecargo(Socio socio){
+        if (socio.getRecargo() != 0){
+            return true;
+        }
+        return false;
+    }
+
     private int contarMultimedia(){
         int cont = 0;
         for (Multimedia m: productosAlquilados) {

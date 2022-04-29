@@ -14,6 +14,8 @@ public abstract class Socio {
     private final String poblacion;
     private int edad;
 
+    private double recargo; /**/
+
     public Socio(String nif, String nombre, GregorianCalendar fechaNac, String poblacion) {
         this.id = ++cont_id;
         this.nif = nif;
@@ -21,9 +23,27 @@ public abstract class Socio {
         this.fechaNac = fechaNac;
         this.poblacion = poblacion;
         edad = Util.calcularEdad(fechaNac);
+        recargo = 0;
     }
     public boolean actualizarEdad(){
         edad = Util.calcularEdad(fechaNac);
         return true;
+    }
+    public boolean agregarRecargo(int numDias){
+        for (int i = 0; i < numDias; i++) {
+            recargo += 2;
+        }
+        return true;
+    }
+    public boolean restarRecargo(double cant){
+        if (cant <= recargo){
+            recargo -= cant;
+            return true;
+        }
+        return false;
+    }
+
+    public double getRecargo() {
+        return recargo;
     }
 }
