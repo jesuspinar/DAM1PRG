@@ -17,16 +17,14 @@ public class Alquiler {
     private int id;
     private double precio;
     private GregorianCalendar fechaAlquiler;
-    private GregorianCalendar fechaDevolucion;//metodo para calcular la fecha limite y no una variable
     private ArrayList<Multimedia> productosAlquilados;
 
-    public Alquiler(Socio socio,GregorianCalendar fechaAlquiler, GregorianCalendar fechaDevolucion,
-                    ArrayList<Multimedia> productosAlquilados) throws RecargosPendientesException {
+    public Alquiler(Socio socio,GregorianCalendar fechaAlquiler, ArrayList<Multimedia> productosAlquilados)
+            throws RecargosPendientesException {
         if (tieneRecargo(socio)){throw new RecargosPendientesException("Socio con recargos, no es posible alquilar");}
         else {
             id = ++cont_id;
             this.fechaAlquiler = fechaAlquiler;
-            this.fechaDevolucion = fechaDevolucion;
             this.productosAlquilados = productosAlquilados;
             precio = 4 * contarMultimedia();
             rebajarAlquiler();
@@ -38,7 +36,7 @@ public class Alquiler {
      * @return
      */
     public int comprobarRetrasoPlazo(){
-        long diferecia = fechaDevolucion.getTimeInMillis() - fechaAlquiler.getTimeInMillis();
+        long diferecia = Calendar.getInstance().getTimeInMillis() - fechaAlquiler.getTimeInMillis();
         int numDias = 0;
         if (diferecia > MAX_DAYS){
             long resto = diferecia - MAX_DAYS;

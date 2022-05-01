@@ -1,5 +1,4 @@
 package com.programacionOO.libs;
-import java.io.IOException;
 import java.util.*;
 
 import static org.apache.commons.lang3.StringUtils.isNumeric;
@@ -258,13 +257,21 @@ public class Util{
      * Generartes a random date min 18
      * @return
      */
-    public static GregorianCalendar generarFechas(int minYear){
+    public static GregorianCalendar generarMayorEdad(int minYear){
         int currentYear = new GregorianCalendar().get(Calendar.YEAR);
         currentYear-=18;
         return new GregorianCalendar(Util.random(minYear, currentYear),
                 Util.random(Calendar.JANUARY, Calendar.DECEMBER), Util.random(1,28));
     }
-    //todo crear nif randoms reales(duplicados o no)
+    /**
+     * Generartes a random date
+     * @return
+     */
+    public static GregorianCalendar generarFecha(int minYear){
+        int currentYear = new GregorianCalendar().get(Calendar.YEAR);
+        return new GregorianCalendar(Util.random(minYear, currentYear),
+                Util.random(Calendar.JANUARY, Calendar.DECEMBER), Util.random(1,28));
+    }
 
 
     /****** SIN return ******/

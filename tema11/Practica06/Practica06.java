@@ -7,5 +7,7 @@ public class Practica06 {
     private final String[] opcionesAltas = {"Nueva pelicula","Nuevo videojuego","Nuevo socio"};
     private final String[] opcionesListar = {"Todos los objetos multimedia","Todas las peliculas (A-Z)", "Todos los videojuegos (por año)","Historico de alquileres de un socio (por año)", "Alquileres activos de socios","Socios con recargos" };
 
-
+    public Practica06() {
+        //todo implement Tienda
+    }
 }
