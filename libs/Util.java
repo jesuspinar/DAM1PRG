@@ -220,10 +220,25 @@ public class Util{
         }
         return newArray;
     }
-    public static boolean validarDNI(String input) {
+
+    /**
+     * Random dni generator, does not ensure unique results
+     * @return String
+     */
+    public static String randomDNI(){
         String dniChars="TRWAGMYFPDXBNJZSQVHLCKE";
+        int num = (int)Math.floor((Util.randomFloat(0.1f,0.9f) * 99999999) + 1);
+        int pos = num % 23;
+        return  num + "" + dniChars.charAt(pos);
+    }
+
+    public static boolean validarDNI(String input) {
+        String dniChars = "TRWAGMYFPDXBNJZSQVHLCKE";
         //removing spaces
         String num = input.trim().replaceAll(" ", "").substring(0, 7);
+        if (input.charAt(8) < 10) {
+            return false;
+        }
         //getting letter
         char letter = input.charAt(8);
         //getting num on letter position
@@ -240,14 +255,16 @@ public class Util{
     }
 
     /**
-     * Generartes a random date
+     * Generartes a random date min 18
      * @return
      */
     public static GregorianCalendar generarFechas(int minYear){
         int currentYear = new GregorianCalendar().get(Calendar.YEAR);
+        currentYear-=18;
         return new GregorianCalendar(Util.random(minYear, currentYear),
                 Util.random(Calendar.JANUARY, Calendar.DECEMBER), Util.random(1,28));
     }
+    //todo crear nif randoms reales(duplicados o no)
 
 
     /****** SIN return ******/

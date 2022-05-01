@@ -10,6 +10,7 @@ public abstract class Multimedia {
     private Formato formato;
     private GregorianCalendar fecha;
 
+    //todo : crear constructor de copia
     public Multimedia(String titulo, String autor, Formato formato, GregorianCalendar fecha) {
         this.titulo = titulo;
         this.autor = autor;
@@ -68,7 +69,7 @@ public abstract class Multimedia {
         if (this == multimedia) return true;
         if (multimedia == null || this.getClass() != multimedia.getClass()) return false;
         Multimedia multimedia1 =(Multimedia) multimedia;
-        return this.titulo.equals(multimedia1.titulo) && autor.equals(multimedia1.autor) && formato == multimedia1.formato;
+        return this.titulo.equalsIgnoreCase(multimedia1.titulo);
     }
 
 }

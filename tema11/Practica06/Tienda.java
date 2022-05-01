@@ -23,6 +23,8 @@ public class Tienda {
         movimientos = new HashMap<>(init);
         generarDatos(init);
     }
+    //todo: altas
+    //todo: listados
 
     //todo: metodo generar datos de prueba
     private void generarDatos(int init){
@@ -51,8 +53,8 @@ public class Tienda {
         GregorianCalendar fechaDevolucion;
         ArrayList<Multimedia> productosAlquilados;
 
+        /*---- pelis ----*/
         for (int i = 0; i < cantPelis; i++) {
-            /*---- pelis ----*/
             titulo = faker.beer().name();
             autor = faker.name().firstName();
             formato = Formato.BLURAY;
@@ -63,8 +65,8 @@ public class Tienda {
             Pelicula p1 = new Pelicula(titulo,autor,formato,fechaPubli,duracionMinutos,actor,actriz);
             multimediaItems.add(p1);
         }
+        /*---- videojuegos ----*/
         for (int i = 0; i < cantJuegos; i++) {
-            /*---- videojuegos ----*/
             titulo = faker.beer().name();
             autor = faker.name().firstName();
             formato = Formato.CD;
@@ -77,6 +79,15 @@ public class Tienda {
             Videojuego v1 = new Videojuego(titulo,autor,formato,fechaPubli,plataformas);
             multimediaItems.add(v1);
         }
+        /*---- socios ----*/
+        for (int i = 0; i < init; i++) {
+            nif = Util.randomDNI();
+            nombre = faker.name().firstName();
+            fechaNac = Util.generarFechas(2000);
+            poblacion = faker.address().city();
+            edad = Util.calcularEdad(fechaNac);
+        }
+
     }
 }
 

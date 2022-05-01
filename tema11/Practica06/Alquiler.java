@@ -17,7 +17,7 @@ public class Alquiler {
     private int id;
     private double precio;
     private GregorianCalendar fechaAlquiler;
-    private GregorianCalendar fechaDevolucion;
+    private GregorianCalendar fechaDevolucion;//metodo para calcular la fecha limite y no una variable
     private ArrayList<Multimedia> productosAlquilados;
 
     public Alquiler(Socio socio,GregorianCalendar fechaAlquiler, GregorianCalendar fechaDevolucion,
