@@ -1,6 +1,8 @@
 package com.programacionOO.tema11.Practica06;
 
 import com.programacionOO.libs.Util;
+
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 public class Socio {
@@ -45,5 +47,20 @@ public class Socio {
 
     public double getRecargo() {
         return recargo;
+    }
+
+    @Override
+    public String toString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        return "\nSocio{" +
+                "id=" + id +
+                ", nif='" + nif + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", fechaNac=" + sdf.format(fechaNac.getTime()) +
+                ", poblacion='" + poblacion + '\'' +
+                ", edad=" + edad +
+                ", recargo=" + recargo +
+                '}';
     }
 }

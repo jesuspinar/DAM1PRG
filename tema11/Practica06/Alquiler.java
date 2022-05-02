@@ -3,6 +3,7 @@ package com.programacionOO.tema11.Practica06;
 import com.programacionOO.tema11.Practica06.MultimediaItems.Pelicula;
 import com.programacionOO.tema11.Practica06.MultimediaItems.Videojuego;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -92,5 +93,17 @@ public class Alquiler {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        return "\nAlquiler{" +
+                "id=" + id +
+                ", precio=" + precio +
+                ", fechaAlquiler=" + sdf.format(fechaAlquiler.getTime()) +
+                ", \n\tproductosAlquilados=" + productosAlquilados +
+                '}';
     }
 }

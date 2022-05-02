@@ -55,12 +55,12 @@ public abstract class Multimedia {
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        sdf.format(fecha.getTime());
+
         return "Mutlimedia{" +
                 "titulo = '" + titulo + '\'' +
                 ", autor = '" + autor + '\'' +
                 ", formato = " + formato +
-                ", fecha = " + sdf +
+                ", fecha = " + sdf.format(fecha.getTime()) +
                 '}';
     }
     //COMPARA SI DOS OBJETOS SON IGUALES

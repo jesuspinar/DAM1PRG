@@ -22,7 +22,7 @@ public class Pelicula extends Multimedia {
 
     @Override
     public String toString() {
-        return "Pelicula{" +
+        return "Pelicula{" + super.toString() +
                 "duracionMinutos=" + duracionMinutos +
                 ", actor principal='" + actor + '\'' +
                 ", actriz principal='" + actriz + '\'' +

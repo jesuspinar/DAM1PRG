@@ -17,7 +17,7 @@ public class Videojuego extends Multimedia {
 
     @Override
     public String toString() {
-        return "Videojuego{" +
+        return "Videojuego{" + super.toString() +
                 "plataformas soportadas=" + plataformas +
                 '}';
     }

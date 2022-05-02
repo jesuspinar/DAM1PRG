@@ -25,6 +25,7 @@ public class Tienda {
         System.out.println(toString());
     }
     //todo: altas
+
     //todo: listados
 
     /**
@@ -69,17 +70,16 @@ public class Tienda {
             multimediaItems.add(p1);
         }
         /*---- videojuegos ----*/
-
+        plataformas = new ArrayList<>();
+        plataformas.add("PC");
+        plataformas.add("PS5");
+        plataformas.add("Android");
+        plataformas.add("iOS");
         for (int i = 0; i < cantJuegos; i++) {
             titulo = faker.beer().name();
             autor = faker.name().firstName();
             formato = Formato.CD;
             fechaPubli = Util.generarMayorEdad(1990);
-            plataformas = new ArrayList<>();
-            plataformas.add("PC");
-            plataformas.add("PS5");
-            plataformas.add("Android");
-            plataformas.add("iOS");
             Videojuego v1 = new Videojuego(titulo,autor,formato,fechaPubli,plataformas);
             multimediaItems.add(v1);
         }
@@ -111,8 +111,8 @@ public class Tienda {
     public String toString() {
         return "Tienda{" +
                 "multimediaItems=" + multimediaItems +
-                ", socios=" + socios +
-                ", movimientos=" + movimientos +
+                "\nsocios=" + socios +
+                "\nmovimientos=" + movimientos +
                 '}';
     }
 }
