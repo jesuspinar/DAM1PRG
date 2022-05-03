@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Objects;
 
 public class Alquiler {
     private static final int DISCOUNT_YEAR_MOVIE = 2012;
@@ -30,6 +31,14 @@ public class Alquiler {
             precio = 4 * contarMultimedia();
             rebajarAlquiler();
         }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public double getPrecio() {
+        return precio;
     }
 
     /**
@@ -105,5 +114,18 @@ public class Alquiler {
                 ", fechaAlquiler=" + sdf.format(fechaAlquiler.getTime()) +
                 ", \n\tproductosAlquilados=" + productosAlquilados +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Alquiler alquiler = (Alquiler) o;
+        return id == alquiler.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

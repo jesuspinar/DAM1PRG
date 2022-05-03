@@ -13,4 +13,9 @@ public class Practica06 {
         //todo implement Tienda
         tienda = new Tienda(init);
     }
+    //todo: altas
+
+    //todo : alquilar multimedia
+    // 1- elegir socio
+    // 2- elegir productos
 }

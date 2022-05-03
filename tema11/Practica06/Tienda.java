@@ -25,6 +25,32 @@ public class Tienda {
         System.out.println(toString());
     }
     //todo: altas
+    public boolean altaPelicula(String titulo,String autor,Formato formato,GregorianCalendar fechaPubli,
+                                int duracionMinutos,String actor,String actriz){
+        Pelicula p1 = new Pelicula(titulo,autor,formato,fechaPubli,duracionMinutos,actor,actriz);
+        multimediaItems.add(p1);
+        return true;
+    }
+    public boolean altaVideojuego(String titulo,String autor,Formato formato,GregorianCalendar fechaPubli,
+                                  ArrayList<String> plataformas){
+        Videojuego v1 = new Videojuego(titulo,autor,formato,fechaPubli,plataformas);
+        multimediaItems.add(v1);
+        return true;
+    }
+    public boolean altaSocio(String nif,String nombre,GregorianCalendar fechaNac,String poblacion){
+        Socio s1 = new Socio(nif,nombre,fechaNac,poblacion);
+        socios.add(s1);
+        return true;
+    }
+    //todo : alquilar multimedia
+    public boolean realizarAlquiler(ArrayList<Multimedia> items, Socio socio) throws RecargosPendientesException {
+        Alquiler alquilerNuevo = new Alquiler(socio,new GregorianCalendar(),items);
+        return true;
+    }
+    //todo : devolver alquiler
+    public boolean devolverAlquiler(Alquiler alquiler, double dinero){
+        return true;
+    }
 
     //todo: listados
 
@@ -52,10 +78,11 @@ public class Tienda {
         String nombre;
         GregorianCalendar fechaNac;
         String poblacion;
-        int edad;
         /*---- alquiler ----*/
         GregorianCalendar fechaAlquiler;
         ArrayList<Multimedia> productosAlquilados;
+        /*---- alquiler ----*/
+        Alquiler alquiler1;
 
         /*---- pelis ----*/
         for (int i = 0; i < cantPelis; i++) {
@@ -89,7 +116,6 @@ public class Tienda {
             nombre = faker.name().firstName();
             fechaNac = Util.generarMayorEdad(2000);
             poblacion = faker.address().city();
-            edad = Util.calcularEdad(fechaNac);
             Socio s1 = new Socio(nif,nombre,fechaNac,poblacion);
             socios.add(s1);
         }
@@ -101,8 +127,7 @@ public class Tienda {
             productosAlquilados.add(multimediaItems.get(Util.random(0,multimediaItems.size()-1)));
             productosAlquilados.add(multimediaItems.get(Util.random(0,multimediaItems.size()-1)));
             Socio rs = socios.get(Util.random(0,socios.size()-1));
-            Alquiler alquiler1 = new Alquiler(rs,
-                    fechaAlquiler,productosAlquilados);
+            alquiler1 = new Alquiler(rs, fechaAlquiler,productosAlquilados);
             movimientos.put(alquiler1,rs);
         }
     }
