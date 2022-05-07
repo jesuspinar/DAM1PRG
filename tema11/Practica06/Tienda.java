@@ -45,10 +45,22 @@ public class Tienda {
     //todo : alquilar multimedia
     public boolean realizarAlquiler(ArrayList<Multimedia> items, Socio socio) throws RecargosPendientesException {
         Alquiler alquilerNuevo = new Alquiler(socio,new GregorianCalendar(),items);
+        socio.agregarAlquiler(alquilerNuevo.getPrecio());
         return true;
     }
+
     //todo : devolver alquiler
     public boolean devolverAlquiler(Alquiler alquiler, double dinero){
+        int retraso = alquiler.comprobarRetrasoPlazo();
+        double precioAlquiler = alquiler.getPrecio();
+
+        if (retraso > 0){
+
+        }
+
+        if ( precioAlquiler > dinero) return false; //cantidad incorrecta de dinero
+        else if (retraso != 0 && dinero >= precioAlquiler){
+        }
         return true;
     }
 

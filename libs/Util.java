@@ -273,7 +273,11 @@ public class Util{
                 Util.random(Calendar.JANUARY, Calendar.DECEMBER), Util.random(1,28));
     }
 
-
+    public static void pausa(){
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException ignored) {}
+    }
     /****** SIN return ******/
 
     public static void analizarString(String s) {

@@ -1,4 +1,4 @@
-package com.programacionOO.tema08.loteria;
+package com.programacionOO.tema11.Practica07;
 
 import com.programacionOO.libs.Util;
 
