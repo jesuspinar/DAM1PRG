@@ -1,4 +1,4 @@
-package com.programacionOO.tema11.Practica07.Ejercicio07a;
+package com.programacionOO.tema11.Practica07.Practica07a;
 
 import com.programacionOO.libs.Util;
 import com.programacionOO.tema08.loteria.Bombo;

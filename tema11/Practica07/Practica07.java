@@ -2,20 +2,20 @@ package com.programacionOO.tema11.Practica07;
 
 import com.programacionOO.libs.Ansi;
 import com.programacionOO.libs.Util;
-import com.programacionOO.tema11.Practica07.Ejercicio07a.Ejercicio07a;
-import com.programacionOO.tema11.Practica07.Ejercicio07b.Ejercicio07b;
+import com.programacionOO.tema11.Practica07.Practica07a.Practica07a;
+import com.programacionOO.tema11.Practica07.Practica07b.Practica07b;
 
-public class Ejercicio07 {
-    public Ejercicio07() {
+public class Practica07 {
+    public Practica07() {
         char opcion;
         do {
             opcion = menuPrincipal();
             switch (opcion) {
                 case 'a':
-                    Ejercicio07a ejercicio07a = new Ejercicio07a();
+                    Practica07a practica07A = new Practica07a();
                     break;
                 case 'b':
-                    Ejercicio07b ejercicio07b = new Ejercicio07b();
+                    Practica07b practica07B = new Practica07b();
                     break;
 
                 case 'c':

@@ -1,6 +1,6 @@
-package com.programacionOO.tema11.Practica07.Ejercicio07a;
+package com.programacionOO.tema11.Practica07.Practica07a;
 
-import com.germangascon.tema11.utils.Color;
+import com.programacionOO.libs.Color;
 
 /**
  * Clase que representa una Zona del Estadio

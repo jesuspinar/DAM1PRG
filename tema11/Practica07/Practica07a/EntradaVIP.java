@@ -1,6 +1,6 @@
-package com.programacionOO.tema11.Practica07.Ejercicio07a;
+package com.programacionOO.tema11.Practica07.Practica07a;
 
-import com.germangascon.tema11.utils.Lib;
+import com.programacionOO.libs.Util;
 
 public class EntradaVIP extends Entrada {
     /** Constantes de configuración */
@@ -23,9 +23,9 @@ public class EntradaVIP extends Entrada {
     public EntradaVIP(Partido partido, Zona zona, Fila fila, Asiento asiento) throws IllegalArgumentException {
         super(partido, zona, fila, asiento);
         int num = ++CONTADOR;
-        this.codigo = Lib.stringAleatorio(CARACTERES_DELANTE) +
+        this.codigo = Util.stringRandom(CARACTERES_DELANTE) +
                 String.format("%0"+LONGITUD_CODIGO+"d", num) +
-                Lib.stringAleatorio(CARACTERES_DETRAS);
+                Util.stringRandom(CARACTERES_DETRAS);
     }
 
     public String getCodigo() {

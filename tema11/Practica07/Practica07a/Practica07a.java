@@ -1,11 +1,11 @@
-package com.programacionOO.tema11.Practica07.Ejercicio07a;
+package com.programacionOO.tema11.Practica07.Practica07a;
 
 import com.programacionOO.libs.Ansi;
 import com.programacionOO.libs.Util;
-import com.programacionOO.tema11.Practica07.Ejercicio07a.Exceptions.EntradaNoExisteException;
-import com.programacionOO.tema11.Practica07.Ejercicio07a.Exceptions.EntradaYaDevueltaException;
-import com.programacionOO.tema11.Practica07.Ejercicio07a.Exceptions.PartidoNoValidoException;
-import com.programacionOO.tema11.Practica07.Ejercicio07a.Exceptions.PartidoYaJugadoException;
+import com.programacionOO.tema11.Practica07.Practica07a.Exceptions.EntradaNoExisteException;
+import com.programacionOO.tema11.Practica07.Practica07a.Exceptions.EntradaYaDevueltaException;
+import com.programacionOO.tema11.Practica07.Practica07a.Exceptions.PartidoNoValidoException;
+import com.programacionOO.tema11.Practica07.Practica07a.Exceptions.PartidoYaJugadoException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,13 +15,13 @@ import java.util.*;
  * Clase que actúa como Main y realiza la mayoría de las operaciones de entrada/salida
  */
 
-public class Ejercicio07a {
+public class Practica07a {
 
     /** Atributos */
     private final GestionEntradas gestionEntradas;
 
 
-    public Ejercicio07a() {
+    public Practica07a() {
         int opcion;
         gestionEntradas = new GestionEntradas();
         do {

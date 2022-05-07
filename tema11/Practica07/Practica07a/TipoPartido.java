@@ -1,6 +1,7 @@
-package com.programacionOO.tema11.Practica07.Ejercicio07a;
+package com.programacionOO.tema11.Practica07.Practica07a;
 
-import com.germangascon.tema11.utils.Lib;
+
+import com.programacionOO.libs.Util;
 
 public enum TipoPartido {
     BAJA_AFLUENCIA, MEDIA_AFLUENCIA, ALTA_AFLUENCIA;
@@ -10,6 +11,6 @@ public enum TipoPartido {
      * @return
      */
     public static TipoPartido random() {
-        return TipoPartido.values()[Lib.aleatorio(0, TipoPartido.values().length-1)];
+        return TipoPartido.values()[Util.random(0, TipoPartido.values().length - 1)];
     }
 }

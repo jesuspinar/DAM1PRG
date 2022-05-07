@@ -1,10 +1,10 @@
-package com.programacionOO.tema11.Practica07.Ejercicio07b;
+package com.programacionOO.tema11.Practica07.Practica07b;
 
 import com.programacionOO.libs.Util;
 
-public class Ejercicio07b {
+public class Practica07b {
 
-    public Ejercicio07b() {
+    public Practica07b() {
         // TODO: Haz que la clase Estadio contenga los partidos
         System.out.println("Haz que la clase Estadio contenga los partidos");
         Util.pausa();

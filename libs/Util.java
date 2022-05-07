@@ -273,12 +273,24 @@ public class Util{
                 Util.random(Calendar.JANUARY, Calendar.DECEMBER), Util.random(1,28));
     }
 
+
+    public static String stringRandom(int longitud) {
+        String alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String numeros = "0123456789";
+        String bombo = alfabeto.toLowerCase() + numeros;
+        StringBuilder builder = new StringBuilder();
+        for(int i = 0; i < longitud; i++) {
+            builder.append(bombo.charAt(random(0,bombo.length()-1)));
+        }
+        return builder.toString();
+    }
+
+    /****** SIN return ******/
     public static void pausa(){
         try {
             Thread.sleep(500);
         } catch (InterruptedException ignored) {}
     }
-    /****** SIN return ******/
 
     public static void analizarString(String s) {
         s = s.replaceAll("\\s+", " ");//elimina spacios de +

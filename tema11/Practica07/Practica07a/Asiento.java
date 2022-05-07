@@ -1,4 +1,4 @@
-package com.programacionOO.tema11.Practica07.Ejercicio07a;
+package com.programacionOO.tema11.Practica07.Practica07a;
 
 /**
  * Clase que representa un Asiento del Estadio
