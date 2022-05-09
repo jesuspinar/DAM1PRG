@@ -1,23 +1,6 @@
 package com.programacionOO.tema10;
 
-import com.programacionOO.libs.Util;
-import com.programacionOO.tema10.Practica02.Practica02;
-import com.programacionOO.tema10.Practica01.Practica01;
-import com.programacionOO.tema10.Practica03.Practica03;
-import com.programacionOO.tema10.Practica04.Practica04;
-import com.programacionOO.tema10.Practica05.Practica05;
-import com.programacionOO.tema10.Practica06.Practica06;
-import com.programacionOO.tema10.Practica07.Practica07;
-import com.programacionOO.tema10.Practica08.Practica08;
-import com.programacionOO.tema10.Practica09.Practica09;
-import com.programacionOO.tema10.Practica10.Practica10;
-import com.programacionOO.tema10.Practica10.employExceptions.NotEmployeException;
-import com.programacionOO.tema10.Practica11.Practica11;
-import com.programacionOO.tema10.acontinuacion.Prueba;
 import com.programacionOO.tema10.acontinuacion.RestarMes;
-import com.programacionOO.tema10.anexoIterator.MyRandom;
-
-import java.io.IOException;
 
 
 public class Main{

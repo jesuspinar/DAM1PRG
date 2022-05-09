@@ -1,7 +1,7 @@
 package com.programacionOO.tema10.acontinuacion;
 
 import com.programacionOO.libs.Util;
-import com.programacionOO.tema10.Practica10.Config.Config;
+import com.programacionOO.tema10.practica10.Config.Config;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;

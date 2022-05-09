@@ -1,16 +1,10 @@
 package com.programacionOO.tema09;
 
 import com.programacionOO.libs.Util;
-import com.programacionOO.tema09.Practica01.Practica01;
-import com.programacionOO.tema09.Practica02.Practica02;
-import com.programacionOO.tema09.Practica03.Practica03;
-import com.programacionOO.tema09.Practica05.Practica05;
-import com.programacionOO.tema09.Practica06.Practica06;
-import com.programacionOO.tema09.Practica07.Practica07;
-import com.programacionOO.tema09.Practica08.Practica08;
-import com.programacionOO.tema09.Practica10.Practica10;
-
-import java.io.IOException;
+import com.programacionOO.tema09.practica05.Practica05;
+import com.programacionOO.tema09.practica06.Practica06;
+import com.programacionOO.tema09.practica07.Practica07;
+import com.programacionOO.tema09.practica10.Practica10;
 
 public class Main {
     public static void main(String[] args) {

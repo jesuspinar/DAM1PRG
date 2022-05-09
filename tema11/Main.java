@@ -1,16 +1,7 @@
 package com.programacionOO.tema11;
 
-import com.programacionOO.libs.Ansi;
-import com.programacionOO.libs.Util;
-import com.programacionOO.tema11.Practica04.Color;
-import com.programacionOO.tema11.Practica04.Practica04;
-import com.programacionOO.tema11.Practica05.Practica05;
-import com.programacionOO.tema11.Practica06.Practica06;
-import com.programacionOO.tema11.Practica07.Practica07;
-import com.programacionOO.tema11.Practica06.RecargosPendientesException;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.programacionOO.tema11.practica07.Practica07;
+import com.programacionOO.tema11.practica06.RecargosPendientesException;
 
 public class Main {
     public static void main(String[] args) throws RecargosPendientesException {
