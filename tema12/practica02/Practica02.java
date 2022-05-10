@@ -13,6 +13,8 @@ public class Practica02 {
 
         if (file.isDirectory()) {
             String[] files = file.list();
+            // puede fallar , frenara la ejecucion antes del llegar al null
+            //todo: mostrar si es directorio o fichero
             for (int i = 0; i < Objects.requireNonNull(files).length; i++) {
                 System.out.println(files[i]);
             }
