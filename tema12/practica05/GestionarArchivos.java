@@ -1,24 +1,22 @@
 package com.programacionOO.tema12.practica05;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-import java.util.Objects;
+
 
 public class GestionarArchivos {
     private static StringBuilder tabConcat = new StringBuilder();
     private static boolean isDir;
     private static boolean isInside;
     /**
-     * Crea un archivo con el nombre archivo
+     * Creates a file inside the folder
      * Nota : maneja excepcion IOException
-     * @param directorio
-     * @param archivo
+     * @param path
+     * @param file_name
      * @return
      */
-    public static boolean crearArchivo(String directorio, String archivo) {
-        File file = new File(directorio,archivo);
+    public static boolean crearArchivo(String path, String file_name) {
+        File file = new File(path,file_name);
         try {
             if(file.createNewFile()){
                 System.out.println("Creado correctamente");
@@ -33,15 +31,15 @@ public class GestionarArchivos {
     }
 
     /**
-     * Visualizará el contenido del directorio
-     * mostrando el tipo (fichero “f” , directorio “d”),
-     * el tamaño y
-     * los permisos de lectura y escritura
-     * @param directorio
+     * It will display the contents of the directory
+     * displaying the type (file "f", directory "d"),
+     * the size, and
+     * the read and write permissions
+     * @param path
      * @param index makes tap grow
      */
-    public static void listarDirectorio(String directorio,int index){
-        File file = new File(directorio);
+    public static void listarDirectorio(String path,int index){
+        File file = new File(path);
         StringBuilder sb = new StringBuilder();
         String tabSize="";
         double  sizeMB;
@@ -86,13 +84,13 @@ public class GestionarArchivos {
     }
 
     /**
-     * Visualiza el nombre, la ruta absoluta, si se puede escribir,
-     * si se puede leer, el tamaño, si es un directorio o si es un archivo
-     * @param directorio
-     * @param archivo
+     * Displays the name, the absolute path, if it is writable, if it is readable,
+     * the size, if it is a directory or a file, if it can be read, the size,
+     * if it is a directory or if it is a file
+     * @param path
      */
-    public static void verInfo(String directorio, String archivo){
-        File file = new File(directorio);
+    public static void verInfo(String path){
+        File file = new File(path);
         long fechaActual = file.lastModified();
         long sizeBytes = file.length();
         double sizeKB = file.length() / 1024;
@@ -116,6 +114,44 @@ public class GestionarArchivos {
 
     }
 
+    /**
+     * Returns the content of a txt
+     * @param path needs absolute path of the file
+     */
+    public static void leerTxt(String path) {
+        try (FileReader fileReader = new FileReader(new File(path));
+            BufferedReader bf = new BufferedReader(fileReader)) {
+                String ln;
+                while ((ln = bf.readLine()) != null) {
+                System.out.printf("%s", ln);
+                bf.close();
+                fileReader.close();
+                }
+        }catch (IOException ioe){
+            System.err.println("Archivo no valido");
+        }
+    }
 
+    /**
+     * Print the value of a binari file
+     * @param path
+     */
+    public static void printHex(String path){
+        try {
+            byte[] b;
+            FileInputStream fr = new FileInputStream(new File(path));
+
+            b = fr.readAllBytes();
+            for (int i = 0; i < b.length; i++) {
+                System.out.printf("%x ",b[i]);
+            }
+            System.out.println();
+            fr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+
+    }
 
 }

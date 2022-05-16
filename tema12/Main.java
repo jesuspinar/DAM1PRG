@@ -20,8 +20,9 @@ public class Main {
 //        Practica04 practica04 = new Practica04(args[0]);
 //
 //        try{
-            GestionarArchivos.listarDirectorio(args[0],0);
-
+//            GestionarArchivos.listarDirectorio(args[0],0);
+//            GestionarArchivos.leerTxt(args[0]);
+            GestionarArchivos.printHex(args[0]);
 //        }catch (Exception npe){
 //            System.out.printf("Te saliste");
 //        }
