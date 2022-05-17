@@ -123,9 +123,7 @@ public class GestionarArchivos {
             BufferedReader bf = new BufferedReader(fileReader)) {
                 String ln;
                 while ((ln = bf.readLine()) != null) {
-                System.out.printf("%s", ln);
-                bf.close();
-                fileReader.close();
+                    System.out.printf("%s", ln);
                 }
         }catch (IOException ioe){
             System.err.println("Archivo no valido");
