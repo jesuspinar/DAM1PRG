@@ -137,19 +137,15 @@ public class GestionarArchivos {
      * @param path
      */
     public static void printHex(String path){
-        try {
+        try (FileInputStream fr = new FileInputStream(new File(path))){
             byte[] b;
-            FileInputStream fr = new FileInputStream(new File(path));
-
             b = fr.readAllBytes();
             for (int i = 0; i < b.length; i++) {
                 System.out.printf("%x ",b[i]);
             }
             System.out.println();
-            fr.close();
         } catch (IOException e) {
             e.printStackTrace();
-
         }
 
     }
