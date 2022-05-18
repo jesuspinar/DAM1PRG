@@ -14,6 +14,7 @@ import java.io.*;
 // que se quiere eliminar del archivo y lo elimine.
 
 public class Practica09 {
+    //todo : pasar un array de objetos Alumno , obtener su nombre y datos y escribirlo
     /**
      * Overrides the file content every time that runs
      * @param path
@@ -22,7 +23,7 @@ public class Practica09 {
      */
     public static boolean insertarAlumnos(String path, String[] alumnos){
         File file = new File(path);
-        if(file.isDirectory()) return false;
+        if(!file.isFile()) return false;
         try ( //auto-close after try
              FileWriter fileWriter = new FileWriter(file);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -41,29 +42,29 @@ public class Practica09 {
     }
 
     public static boolean eliminarAlumno(String path,String name) {
+        //todo crear un archivo termporal , Files .tmp tiene para obterner el dir de la carpeta tmp
+        // crear un archivo .tmp y luego renombrarlo
         //read file
         File file = new File(path);
-//        File copyFile = new File(path);
+        File copyFile = new File(path+".tmp");
         try (
              FileReader fileReader = new FileReader(file);
              BufferedReader bufferedReader = new BufferedReader(fileReader);
-             FileWriter fileWriter = new FileWriter(file);
+             FileWriter fileWriter = new FileWriter(copyFile,false);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
              )
         {
             //find name position
             String ln;
             while ((ln = bufferedReader.readLine()) != null) {
-                if(name.equalsIgnoreCase(ln)){
-                   //copy all file except name possition
-                    bufferedWriter.write("algo");
-                }else {
+                if(!name.equalsIgnoreCase(ln)){
                     bufferedWriter.write(ln);
                     bufferedWriter.newLine();
                 }
             }
-
-
+            if (file.delete()&& copyFile.renameTo(file)){
+                System.out.println("Eliminacion correcta");
+            }
         }
         catch (IOException ioe){
             System.err.println("Fallo en la eliminación");

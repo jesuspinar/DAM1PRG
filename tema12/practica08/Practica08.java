@@ -5,7 +5,7 @@ import com.programacionOO.tema12.practica05.GestionarArchivos;
 public class Practica08 {
 
     public Practica08(String path) {
-        GestionarArchivos.leerTxt(path);
+        GestionarArchivos.readTxt(path);
     }
 
 }

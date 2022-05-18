@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 
 
 public class GestionarArchivos {
+    public static final String separator = File.separator;
     private static StringBuilder tabConcat = new StringBuilder();
     private static boolean isDir;
     private static boolean isInside;
@@ -118,16 +119,20 @@ public class GestionarArchivos {
      * Returns the content of a txt
      * @param path needs absolute path of the file
      */
-    public static void leerTxt(String path) {
+    public static String readTxt(String path) {
+        StringBuilder sb = new StringBuilder();
         try (FileReader fileReader = new FileReader(new File(path));
             BufferedReader bf = new BufferedReader(fileReader)) {
                 String ln;
                 while ((ln = bf.readLine()) != null) {
+                    sb.append(ln);
                     System.out.printf("%s", ln);
                 }
         }catch (IOException ioe){
             System.err.println("Archivo no valido");
         }
+        return sb.toString();
+
     }
 
     /**
@@ -146,6 +151,54 @@ public class GestionarArchivos {
             e.printStackTrace();
         }
 
+    }
+    //10. Haz un método llamado concat que reciba como parámetro 2 archivos
+    // y cree un tercer fichero, cuyo contenido, se obtendrá uniendo la información de los 2 archivos indicados.
+    // Primero irá el contenido del archivo recibido como primer parámetro y después
+    // el contenido del archivo recibido como segundo parámetro.
+    public static boolean concat(File file1, File file2){
+        File file3 = new File(file1.getPath(),"Test.txt");
+        String contentF1;
+        String contentF2;
+        try(
+            FileWriter fileWriter = new FileWriter(file3);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)
+            )
+            {
+               contentF1 = readTxt(file1.getAbsolutePath());
+               contentF2 = readTxt(file2.getAbsolutePath());
+
+               bufferedWriter.write(contentF1);
+               bufferedWriter.write(contentF2);
+            }
+            catch (IOException e) {
+                System.out.println("");
+                return false;
+            }
+        //todo : concatenar el nombre archivo1-archivo2 + extension
+        // hacer con sb.split devuelve un array de string y luego obtener
+        // la ultima poscion y concatenarla
+        return true;
+    }
+
+    //11. Haz un método llamado concatLines que reciba como parámetro 2 archivos y cree
+    // un tercer archivo, el contenido se obtendrá uniendo la información de los 2 archivos.
+    // Cada línea del archivo creado estará formado por la unión de la misma línea de los dos archivos leídos.
+
+    public static void concatLines(File file1, File file2){
+        File file3 =new File(file1.getPath(), file1.getName()+"-"+file2.getName());
+        try(
+            FileReader fileReader1 = new FileReader(file1);
+            FileReader fileReader2 = new FileReader(file2);
+            FileWriter fileWriter = new FileWriter(file3);
+        )
+            {
+                int i = 0;
+                while((i = fileReader1.read()) != -1) {
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

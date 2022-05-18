@@ -11,10 +11,10 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-//        if (args.length != 1){
-//            System.out.println("Please enter an string");
-//            System.exit(0);
-//        }
+        if (args.length != 1){
+            System.out.println("Please enter an string");
+            System.exit(0);
+        }
 //        Practica01 practica01 = new Practica01(args[0]);
 //        Practica02 practica02 = new Practica02(args[0]);
 //        Practica03 practica03 = new Practica03(args[0]);
@@ -22,7 +22,7 @@ public class Main {
 //
         String[] alumnos = {"Jose","Aurelio","Vicenta","Sofia","Sergio"};
         if(Practica09.insertarAlumnos(args[0],alumnos)) System.out.println("Escritura completada");
-//        if(Practica09.eliminarAlumno(args[0],"Vicenta")) System.out.println("Borrado completado");
+        if(Practica09.eliminarAlumno(args[0],"Vicenta")) System.out.println("Borrado completado");
 
 
     }
