@@ -186,16 +186,29 @@ public class GestionarArchivos {
     // Cada línea del archivo creado estará formado por la unión de la misma línea de los dos archivos leídos.
 
     public static void concatLines(File file1, File file2){
-        File file3 =new File(file1.getPath(), file1.getName()+"-"+file2.getName());
+        File file3 =new File(file1.getPath(), "concatLines.txt");
+        int i = 0;
+        String firstLineFile1 ;
+        String firstLineFile2 = null;
         try(
             FileReader fileReader1 = new FileReader(file1);
+            BufferedReader bufferedReader1 = new BufferedReader(fileReader1);
             FileReader fileReader2 = new FileReader(file2);
-            FileWriter fileWriter = new FileWriter(file3);
+            BufferedReader bufferedReader2 = new BufferedReader(fileReader2);
+            FileWriter fileWriter3 = new FileWriter(file3);
+            BufferedWriter br = new BufferedWriter(fileWriter3);
         )
-            {
-                int i = 0;
-                while((i = fileReader1.read()) != -1) {
+        {
+
+            while((firstLineFile1 = bufferedReader1.readLine()) != null || (firstLineFile2 = bufferedReader2.readLine()) != null) {
+                if (firstLineFile1 != null){
+                    br.write(firstLineFile1);
+                }
+                if(firstLineFile2 != null){
+                    br.write(firstLineFile2);
+                }
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
