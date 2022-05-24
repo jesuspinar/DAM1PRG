@@ -25,7 +25,9 @@ public class Main {
 //        if(Practica09.insertarAlumnos(args[0],alumnos)) System.out.println("Escritura completada");
 //        if(Practica09.eliminarAlumno(args[0],"Vicenta")) System.out.println("Borrado completado");
 
-        Practica13 practica13 = new Practica13(args[0]);
+//        Practica13 practica13 = new Practica13(args[0]);
 
+
+        System.out.println("   |   |   \n-----------\n   |   |   \n-----------\n   |   |   \n");
     }
 }

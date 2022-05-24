@@ -8,6 +8,7 @@ public class Practica08 {
         GestionarArchivos.readTxt(path);
     }
 
+
 }
 // 8. Crea un programa que permita leer y mostrar el contenido de un archivo
 // pasado como parámetro al llamar al programa.
