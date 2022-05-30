@@ -59,15 +59,16 @@ public class MainT13 {
 //        System.out.println("Fin del programa");
 
         //PRACTICA 06
-        Faker faker = new Faker(new Locale("es"));
-        Practica06 practica06;
-        Thread thread;
-        int n_cpu = Runtime.getRuntime().availableProcessors();
-        for (int i = 0; i < n_cpu; i++) {
-            practica06 = new Practica06(faker.name().firstName());
-            thread = new Thread(practica06);
-            thread.start();
-        }
-        System.out.println("Fin del programa");
+//        Faker faker = new Faker(new Locale("es"));
+//        Practica06 practica06;
+//        Thread thread;
+//        int n_cpu = Runtime.getRuntime().availableProcessors();
+//        for (int i = 0; i < n_cpu; i++) {
+//            practica06 = new Practica06(faker.name().firstName());
+//            thread = new Thread(practica06);
+//            thread.start();
+//        }
+//        System.out.println("Fin del programa");
+
     }
 }
