@@ -64,6 +64,7 @@ public class Practica07HiloGestor {
                 min = max;
                 max += num_hilos ;
             }
+
         }
     }
     private int getHilosDisponibles(){
