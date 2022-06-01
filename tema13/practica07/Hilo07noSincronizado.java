@@ -8,20 +8,19 @@ package com.programacionOO.tema13.practica07;
 * El número de hilos debe ser igual al número de núcleos de tu CPU
 * si el tamaño del array lo permite.
 */
-class Practica07 implements Runnable {
+class Hilo07noSincronizado implements Runnable {
 
-    private static final int N_CPU = Runtime.getRuntime().availableProcessors();
-//    private Thread thread;
     private int[] vector;
     private int x;
-    private boolean match;
+    private int min;
+    private int max;
+    private static boolean match;
 
-    // primer hilo busca de la 1-5
-    // segundo hilo busca de la 6-10
-
-    public Practica07(int[] vector, int x) {
+    public Hilo07noSincronizado(int[] vector, int x, int min , int max) {
         this.vector = vector;
         this.x = x;
+        this.min = min;
+        this.max = max;
         match = false;
     }
 
@@ -33,34 +32,16 @@ class Practica07 implements Runnable {
         return false;
     }
 
-
     @Override
     public void run() {
-        // repartirArray()
-        // si un array tiene 10 posiciones
-        // y tu cpu tiene 4 hilos
-        // coje 10 / 4 = 2
-        // primer hilo 0-2,
-        // segundo hilo 3-5,
-        // tercer hilo 6-8,
-        // cuarto hijo 9
-
-        int media = vector.length / N_CPU;
-        if(vector.length < media){
-            match = contains(0,vector.length);
-        }else{
-
-            for (int i = 0; i < media; i++) {
-//                contains();
-            }
-        }
-
-        if (match){
+        if (contains(min,max)){
+            match = true;
             System.out.println("Number found");
+            //todo: actualizar con interfaz listener onFound(this) onFinised(this)
         }
     }
 
-    public boolean isMatch() {
+    public static boolean isMatch() {
         return match;
     }
 }
