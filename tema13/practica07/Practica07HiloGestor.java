@@ -1,53 +1,38 @@
 package com.programacionOO.tema13.practica07;
 
-import static com.programacionOO.tema13.practica07.Hilo07noSincronizado.isMatch;
-
 public class Practica07HiloGestor {
 
     private final int[] vector;
     private final int x;
-    private int min;
-    private int max;
+    private static int min;
+    private static int max;
     private Thread t;
-    private ThreadListener listener;
+    private boolean listener;
 
+    //todo mostrar el hilo que ha encontrado el numero 
     public Practica07HiloGestor(int[] vector, int x) {
         this.vector = vector;
         this.x = x ;
-         repartirArray();
-
-         // syncronized
-//         try{
-//             t.join();
-//         } catch (InterruptedException e) {
-//             e.printStackTrace();
-//         }
+        listener = repartirArray();
+        System.out.println(listener);
         //todo implementar join de todos los hilos involucrados
-        if (Hilo07noSincronizado.isMatch()) System.out.println("Match");
-
-        // si un array tiene 10 posiciones
-        // y tu cpu tiene 4 hilos
-        // coje 10 / 4 = 2
-        // primer hilo 0-2,
-        // segundo hilo 3-5,
-        // tercer hilo 6-8,
-        // cuarto hijo 9
-        // una variable para guardar un indiceDiferencia que se le sumara al
-        // parametro max que sera
-        // y max anterior se asignara = min
-
+        //TODO : correct functionality, it wont get any match cause of
+        // a new Thread is created during or after a match checking, and
+        // that will corrupt integrity of manager checking .isMatch()
+        if (listener){System.out.println("Match");}
     }
 
     /**
      * Reparte el min y el max para cada hilo en funcion a los hijos
+     * @return
      */
-    private void repartirArray() {
+    private boolean repartirArray() {
         int n_cpu = getHilosDisponibles();
         int num_hilos = vector.length / n_cpu;
         min = 0;
         max = vector.length;
 
-        if(vector.length < num_hilos){
+        if(vector.length < num_hilos|| vector.length < 2_000_000){
             Hilo07noSincronizado h = new Hilo07noSincronizado(vector,x,min,max);
             t = new Thread(h);
             t.start();
@@ -57,15 +42,19 @@ public class Practica07HiloGestor {
             max = num_hilos;
             // creara tantos hilos como procesadores se dispongan
             // signando un rango de valores para cada hilo nuevo
-            for (int i =  0; i < num_hilos ; i++) {
-                Hilo07noSincronizado h = new Hilo07noSincronizado(vector,x,min,max);
+            Hilo07noSincronizado h;
+            for (int i = 0; i < n_cpu ; i++) {
+                if (Hilo07noSincronizado.isMatch()){
+                    return true;}
+                h = new Hilo07noSincronizado(vector,x,min,max);
                 t = new Thread(h);
                 t.start();
+//                if(h.isMatch()){return;}
                 min = max;
                 max += num_hilos ;
             }
-
         }
+        return false;
     }
     private int getHilosDisponibles(){
         return Runtime.getRuntime().availableProcessors();

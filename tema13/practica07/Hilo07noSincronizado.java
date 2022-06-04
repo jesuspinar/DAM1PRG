@@ -9,7 +9,7 @@ package com.programacionOO.tema13.practica07;
 * si el tamaño del array lo permite.
 */
 class Hilo07noSincronizado implements Runnable {
-
+    //todo implement conversion to treemap
     private int[] vector;
     private int x;
     private int min;
@@ -20,8 +20,8 @@ class Hilo07noSincronizado implements Runnable {
         this.vector = vector;
         this.x = x;
         this.min = min;
-        this.max = max;
-        match = false;
+        if (max > vector.length) this.max = vector.length;
+        else this.max = max;
     }
 
     public boolean contains(int min, int max) {
@@ -40,7 +40,7 @@ class Hilo07noSincronizado implements Runnable {
             //todo: actualizar con interfaz listener onFound(this) onFinised(this)
         }
     }
-
+    //todo no es fiable 100% --
     public static boolean isMatch() {
         return match;
     }

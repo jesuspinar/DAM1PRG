@@ -7,9 +7,13 @@ public class Practica06 {
 
     Tienda tienda;
 
-    public Practica06(int init) throws RecargosPendientesException {
+    public Practica06(int init)  {
         //todo implement Tienda
-        tienda = new Tienda(init);
+        try{
+            tienda = new Tienda(init);
+        } catch (RecargosPendientesException e) {
+            e.printStackTrace();
+        }
     }
     //todo: altas
 

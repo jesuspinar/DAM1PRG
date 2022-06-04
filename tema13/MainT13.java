@@ -7,6 +7,7 @@ import com.programacionOO.tema13.practica03.Practica03;
 import com.programacionOO.tema13.practica04.Practica04;
 import com.programacionOO.tema13.practica05.Practica05;
 import com.programacionOO.tema13.practica06.Practica06;
+import com.programacionOO.tema13.practica07.Practica07HiloGestor;
 
 import java.util.Locale;
 
@@ -69,6 +70,11 @@ public class MainT13 {
 //            thread.start();
 //        }
 //        System.out.println("Fin del programa");
-
+        //PRACTICA 07
+        int[] a = new int[3_000_001];
+        for (int i = 0; i < a.length; i++) {
+            a[i] = i ;
+        }
+        Practica07HiloGestor s = new Practica07HiloGestor(a, 2_983_424);
     }
 }
