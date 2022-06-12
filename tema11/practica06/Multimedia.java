@@ -68,7 +68,7 @@ public abstract class Multimedia {
     public boolean equals(Object multimedia) {
         if (this == multimedia) return true;
         if (multimedia == null || this.getClass() != multimedia.getClass()) return false;
-        Multimedia multimedia1 =(Multimedia) multimedia;
+        Multimedia multimedia1 = (Multimedia) multimedia;
         return this.titulo.equalsIgnoreCase(multimedia1.titulo);
     }
 

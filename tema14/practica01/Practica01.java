@@ -2,8 +2,6 @@ package com.programacionOO.tema14.practica01;
 
 import java.io.*;
 import java.net.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 /**
  * Crea un programa que, utilizando la clase Socket, se conecte a la URL
@@ -14,20 +12,14 @@ import java.nio.file.Paths;
 public class Practica01 {
     private Socket socket;
     private static final int MILIS = 19_000;
+    private String host ;
+    private int port ;
 
-    public Practica01(String uri, int port) {
+    public Practica01(String host, int port) {
+        this.host = host;
+        this.port = port;
         //Openning a new connection
-        try {
-            socket = new Socket(uri, port);
-            if (socket.isConnected()){
-                System.out.println("Connected : " + InetAddress.getByName(uri));
-
-            }else {
-                System.out.println("Failed connection");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        openConnection();
         //Getting and printing data
         try {
             socket.setSoTimeout(MILIS);
@@ -35,22 +27,39 @@ public class Practica01 {
         } catch (SocketException e) {
             e.printStackTrace();
         }
-
         //Closing the door
+        closeConnection();
+    }
+
+    private boolean openConnection(){
         try {
-            socket.close();
-            System.out.println("Disconnected : " + InetAddress.getByName(uri));
+            socket = new Socket(host, port);
+            if (socket.isConnected()){
+                System.out.println("Connected : " + InetAddress.getByName(host));
+
+            }else {
+                System.out.println("Failed connection");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return true;
     }
+
     private boolean retriveData(){
         try(BufferedReader bufferedReader = new BufferedReader(
                 new InputStreamReader(socket.getInputStream()));
+                PrintWriter pw = new PrintWriter(socket.getOutputStream(),true);
         ){
-            System.out.println("Getting info...");
+            //depende del navegador el servido puede aplicar optimizaviones de respuesta
+            //Realizamos las peticiones necesarias desde el stream de salida
+            pw.println("GET /index.html HTTP/1.1");
+//            pw.println("User-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)");
+            pw.println("Host: www." + host); //si no se pone el host se confunde
+            pw.println("Connection: close");
+            pw.println();
             String ln;
-            while ((ln = bufferedReader.readLine()) != null) {
+            while((ln = bufferedReader.readLine()) != null){
                 System.out.println(ln);
             }
             return true;
@@ -58,5 +67,15 @@ public class Practica01 {
             e.printStackTrace();
         }
         return false;
+    }
+
+    private boolean closeConnection(){
+        try {
+            socket.close();
+            System.out.println("Disconnected : " + InetAddress.getByName(host));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return true;
     }
 }

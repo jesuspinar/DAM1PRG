@@ -77,7 +77,7 @@ public class Util{
         }while (!isValid);
         return data;
     }
-    public static int askInteger2(String s,int min, int max) {
+    public static int askInteger(String s, int min, int max) {
         boolean isValid = false;
         int data;
         do {

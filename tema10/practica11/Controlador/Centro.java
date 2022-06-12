@@ -55,7 +55,7 @@ public class Centro {
 
 
             System.out.println(mostrarAsignaturas());
-            int num_asignaturas = Util.askInteger2("Cuantas quieres cursar?", 2,9);
+            int num_asignaturas = Util.askInteger("Cuantas quieres cursar?", 2,9);
             ArrayList<Asignatura> nuevasAsignaturas = new ArrayList<>(num_asignaturas);
             /*BUSCA ASIGNATURAS*/
             do {

@@ -17,11 +17,15 @@ public class Tienda {
     private ArrayList<Socio> socios;
     private HashMap<Alquiler,Socio> movimientos;
 
-    public Tienda(int init) throws RecargosPendientesException {
+    public Tienda(int init) {
         multimediaItems = new ArrayList<>(init);
         socios = new ArrayList<>(init);
         movimientos = new HashMap<Alquiler,Socio>(init);
-        generarDatos(init);
+        try {
+            generarDatos(init);
+        } catch (RecargosPendientesException e) {
+            e.printStackTrace();
+        }
         System.out.println(toString());
     }
     //todo: altas
@@ -90,7 +94,7 @@ public class Tienda {
         String nombre;
         GregorianCalendar fechaNac;
         String poblacion;
-        /*---- alquiler ----*/
+        /*---- movimientos ----*/
         GregorianCalendar fechaAlquiler;
         ArrayList<Multimedia> productosAlquilados;
         /*---- alquiler ----*/

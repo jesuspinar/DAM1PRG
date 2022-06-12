@@ -61,7 +61,7 @@ public class Ansi {
         return color;
     }
 
-    public static String format(String s, boolean bold, Color fg, Color bg, Object...args) throws IllegalFormatException {
+    public static String format(String s, boolean bold, Color fg, Color bg, Object...args) {
         String color = getColorStr(bold, fg, bg);
         return color + String.format(s, args) + RESET;
     }

@@ -25,7 +25,7 @@ public class GestorDatos {
     public boolean nuevoEmpleado() throws NotEmployeException {
         String nombre = Util.askStringRestricted("Introduzca su nombre",Config.MIN_NAME,Config.MAX_NAME);
         String apellido = Util.askStringRestricted("Introduzca su apellido",Config.MIN_NAME,Config.MAX_NAME);
-        float sueldo = (float) Util.askInteger2("Cuanto quiere ganar?" , Config.MIN_SUELDO,Config.MAX_SUELDO);
+        float sueldo = (float) Util.askInteger("Cuanto quiere ganar?" , Config.MIN_SUELDO,Config.MAX_SUELDO);
         String nif;
         do {
             nif = Util.askStringRestricted("Introduzca su nif ",9,9);
@@ -34,9 +34,9 @@ public class GestorDatos {
         GregorianCalendar fechaNac;
         int year = 0,month = 0, day = 0;
 
-        year = Util.askInteger2("El año en el que nacio" , Config.MIN_YEAR,Config.MAX_YEAR);
-        month = Util.askInteger2("El mes en el que nacio" , Config.MIN_MONTH,Config.MAX_MONTH);
-        day = Util.askInteger2("El day en el que nacio" ,Config.MIN_DAY,Config.MAX_DAY);
+        year = Util.askInteger("El año en el que nacio" , Config.MIN_YEAR,Config.MAX_YEAR);
+        month = Util.askInteger("El mes en el que nacio" , Config.MIN_MONTH,Config.MAX_MONTH);
+        day = Util.askInteger("El day en el que nacio" ,Config.MIN_DAY,Config.MAX_DAY);
         fechaNac = new GregorianCalendar(year,month,day);
 
         Empleado empleado = new Empleado(nif,nombre,apellido,fechaNac,sueldo);
@@ -53,9 +53,9 @@ public class GestorDatos {
             GregorianCalendar fechaNac;
             int year = 0,month = 0, day = 0;
 
-            year = Util.askInteger2("El año en el que nacio" , Config.MIN_YEAR,Config.MAX_YEAR);
-            month = Util.askInteger2("El mes en el que nacio" , Config.MIN_MONTH,Config.MAX_MONTH);
-            day = Util.askInteger2("El day en el que nacio" ,Config.MIN_DAY,Config.MAX_DAY);
+            year = Util.askInteger("El año en el que nacio" , Config.MIN_YEAR,Config.MAX_YEAR);
+            month = Util.askInteger("El mes en el que nacio" , Config.MIN_MONTH,Config.MAX_MONTH);
+            day = Util.askInteger("El day en el que nacio" ,Config.MIN_DAY,Config.MAX_DAY);
             fechaNac = new GregorianCalendar(year,month,day);
 
             return empleados.get(busquedaPosicion(id)).addHijo(nombre,apellido,fechaNac);
@@ -65,7 +65,7 @@ public class GestorDatos {
     public boolean modificarSueldo() throws NotEmployeException {
         int idEmpleado = Util.askInteger("Intruzca su id empleado:");
         if (busquedaEmpleado(idEmpleado)){
-            float sueldoNuevo = Util.askInteger2("Cuanto desea ganar?",Config.MIN_SUELDO, Config.MAX_SUELDO);
+            float sueldoNuevo = Util.askInteger("Cuanto desea ganar?",Config.MIN_SUELDO, Config.MAX_SUELDO);
             return empleados.get(busquedaPosicion(idEmpleado)).modifySueldo(sueldoNuevo);
         }
         return false;

@@ -9,11 +9,11 @@ public class Practica06 {
 
     public Practica06(int init)  {
         //todo implement Tienda
-        try{
-            tienda = new Tienda(init);
-        } catch (RecargosPendientesException e) {
-            e.printStackTrace();
-        }
+//        try{
+//            tienda = new Tienda(init);
+//        } catch (RecargosPendientesException e) {
+//            e.printStackTrace();
+//        }
     }
     //todo: altas
 

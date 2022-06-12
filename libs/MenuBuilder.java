@@ -1,9 +1,6 @@
 package com.programacionOO.libs;
 
-import java.util.Locale;
-
 public class MenuBuilder {
-
     public static int printMenu(String [] options,String title) {
         if (options != null) {
             System.out.printf("+");
